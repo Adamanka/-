@@ -221,6 +221,37 @@
             color: #bc9a72;
         }
 
+        /* Стиль для картинки в главе */
+        .chapter-image {
+            margin: 1.2rem 0 1.2rem 0;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            background: #f2ece4;
+            border: 1px solid #e2d5c8;
+        }
+
+        .chapter-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .chapter-image img:hover {
+            transform: scale(1.01);
+        }
+
+        .image-caption {
+            font-size: 0.7rem;
+            color: #9b826b;
+            text-align: center;
+            padding: 0.5rem;
+            background: #faf7f2;
+            border-top: 1px solid #e9dfd3;
+        }
+
         hr {
             border: none;
             height: 1px;
@@ -244,7 +275,6 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        /* Задержки для последовательного появления */
         .fade-item:nth-child(1) { animation-delay: 0.05s; }
         .fade-item:nth-child(2) { animation-delay: 0.10s; }
         .fade-item:nth-child(3) { animation-delay: 0.15s; }
@@ -272,7 +302,6 @@
             }
         }
 
-        /* Анимация для заголовков секций */
         .section-title, .history-title {
             opacity: 0;
             transform: translateY(10px);
@@ -329,6 +358,14 @@
                 
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-hammer"></i> Детство и проклятая руна</div>
+                    
+                    <!-- КАРТИНКА ДЛЯ ПЕРВОЙ ГЛАВЫ -->
+                    <div class="chapter-image fade-item">
+                        <img src="AClOY7r3HLLx_aoETd1Z7nleTOPT_wbhRVK-f7hi3cOkZUb_fxb-kl7Se-wHX6UwdUBr1cvuwSL2vG8V_K9wSRpPMA1wGXWC8WkAH_Q0i54FkmPQcWT-1Sxf_OmzDnpWDeW92YFc8qBb6BGzbSTSI8614wDTMF4VU28edefsmH2o51cs1MFOrdHi7hwE7xsYqIh8.png" 
+                             alt="Иллюстрация к главе Детство и проклятая руна">
+                        <div class="image-caption">✦ Тайная кузница отца — чёрный камень с древней руной ✦</div>
+                    </div>
+                    
                     <div class="section-text fade-item">
                         Траин родился в Дельстейне, в семье кузнеца Ульда Углича. Мать умерла при родах, отец растил его сурово, брат Балин — жестоко. Траин был тихим и слишком много думал. Это бесило брата. 
                         В детстве отец отправил Траина в часовню при старом храме — маленькую каменную церковь на окраине Карнхольма, где молились бедняки. Старая жрица, которую все звали просто Мать, учила детей читать, писать и молиться. Она никогда не называла имя своего бога. 
@@ -404,7 +441,7 @@
                 </div>
             </div>
 
-            <!-- ========== ЦЕЛИ — В САМОМ КОНЦЕ ========== -->
+            <!-- ========== ЦЕЛИ ========== -->
             <div class="section">
                 <div class="section-title">
                     <i class="fas fa-bullseye"></i>
