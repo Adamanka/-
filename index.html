@@ -221,13 +221,14 @@
             color: #bc9a72;
         }
 
-        /* Стиль для картинки в главе */
+        /* Стиль для картинки — компактная, слева, с обтеканием */
         .chapter-image {
-            margin: 1.2rem 0 1.2rem 0;
-            text-align: center;
-            border-radius: 20px;
+            float: left;
+            width: 200px;
+            margin: 0 1.2rem 0.8rem 0;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             background: #f2ece4;
             border: 1px solid #e2d5c8;
         }
@@ -236,20 +237,21 @@
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .chapter-image img:hover {
-            transform: scale(1.01);
         }
 
         .image-caption {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #9b826b;
             text-align: center;
-            padding: 0.5rem;
+            padding: 0.4rem;
             background: #faf7f2;
             border-top: 1px solid #e9dfd3;
+            font-style: italic;
+        }
+
+        /* Очистка обтекания после картинки */
+        .clear-float {
+            clear: both;
         }
 
         hr {
@@ -311,6 +313,15 @@
         .section-title { animation-delay: 0s; }
         .history-title { animation-delay: 0.02s; }
 
+        @media (max-width: 600px) {
+            .chapter-image {
+                float: none;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto 1rem auto;
+            }
+        }
+
         @media (max-width: 700px) {
             body { padding: 1rem; }
             h1 { font-size: 2rem; }
@@ -359,11 +370,11 @@
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-hammer"></i> Детство и проклятая руна</div>
                     
-                    <!-- КАРТИНКА ДЛЯ ПЕРВОЙ ГЛАВЫ -->
+                    <!-- КАРТИНКА — МЕНЬШЕГО РАЗМЕРА, С ОБТЕКАНИЕМ ТЕКСТА -->
                     <div class="chapter-image fade-item">
                         <img src="AClOY7r3HLLx_aoETd1Z7nleTOPT_wbhRVK-f7hi3cOkZUb_fxb-kl7Se-wHX6UwdUBr1cvuwSL2vG8V_K9wSRpPMA1wGXWC8WkAH_Q0i54FkmPQcWT-1Sxf_OmzDnpWDeW92YFc8qBb6BGzbSTSI8614wDTMF4VU28edefsmH2o51cs1MFOrdHi7hwE7xsYqIh8.png" 
                              alt="Иллюстрация к главе Детство и проклятая руна">
-                        <div class="image-caption">✦ Тайная кузница отца — чёрный камень с древней руной ✦</div>
+                        <div class="image-caption">✦ Тайная кузница — чёрный камень с древней руной ✦</div>
                     </div>
                     
                     <div class="section-text fade-item">
@@ -376,6 +387,7 @@
                         Траин тайком прикасался к ней. С того дня руна словно осталась с ним. Не на камне — внутри. Под кожей. В крови. Он чувствовал её, даже когда был далеко от подвала. 
                         Балин узнал, ударил Траина, назвал колдуном и слабаком. С тех пор братья стали чужими. Отец умер, когда Траину было пятнадцать. Сердце. Прямо у горна. Балин обвинил Траина в проклятии. Кредиторы забрали кузницу.
                     </div>
+                    <div class="clear-float"></div>
                 </div>
 
                 <div class="history-chapter">
