@@ -4,355 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Траин Углич · Квента персонажа</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #e8e0d5;
-            background-image: radial-gradient(circle at 20% 30%, rgba(180, 150, 120, 0.08) 2%, transparent 2.5%);
-            background-size: 32px 32px;
-            font-family: 'Inter', sans-serif;
-            color: #2c241e;
-            line-height: 1.55;
-            padding: 2rem 1.5rem;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .dossier {
-            background: #fffcf7;
-            border-radius: 24px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.02);
-            overflow: hidden;
-            border: 1px solid #e2d5c8;
-        }
-
-        .header {
-            background: #f5efe8;
-            padding: 1.8rem 2rem 1.2rem 2rem;
-            border-bottom: 2px solid #cbbfae;
-        }
-
-        .rune-line {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-            color: #9b7b5e;
-            letter-spacing: 4px;
-            font-family: monospace;
-            margin-bottom: 0.75rem;
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamont', serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: #3a2c22;
-            letter-spacing: -0.5px;
-            margin: 0.25rem 0 0.2rem;
-        }
-
-        .sub {
-            color: #7d6652;
-            font-size: 0.85rem;
-            border-left: 3px solid #bc9a72;
-            padding-left: 1rem;
-            margin-top: 0.4rem;
-        }
-
-        .info-panel {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            padding: 2rem 2rem 0.8rem 2rem;
-            border-bottom: 1px solid #e9dfd3;
-        }
-
-        .avatar {
-            flex: 1;
-            min-width: 180px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .rune-symbol {
-            width: 130px;
-            height: 130px;
-            background: #f2ece4;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #dacbbc;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-        }
-
-        .rune-symbol i {
-            font-size: 3.8rem;
-            color: #aa8260;
-        }
-
-        .badge {
-            background: #f3ede6;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            color: #6e5440;
-            border: 1px solid #dfd0c0;
-        }
-
-        .traits {
-            flex: 2.5;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 0.8rem 1.5rem;
-        }
-
-        .trait-item {
-            border-bottom: 1px solid #e5d9ce;
-            padding-bottom: 0.4rem;
-        }
-
-        .trait-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #9b826b;
-            font-weight: 500;
-        }
-
-        .trait-value {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #3e3026;
-            margin-top: 0.2rem;
-        }
-
-        .content {
-            padding: 1.2rem 2rem 2rem 2rem;
-        }
-
-        .section {
-            margin-bottom: 2.2rem;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamont', serif;
-            font-size: 1.7rem;
-            font-weight: 600;
-            color: #836e58;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid #e0cfbf;
-            padding-bottom: 0.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-title i {
-            font-size: 1.4rem;
-            color: #bc9a72;
-        }
-
-        .section-text {
-            color: #3d3229;
-            text-align: justify;
-            margin-bottom: 0.75rem;
-        }
-
-        .quote-mini {
-            background: #faf5ef;
-            padding: 0.8rem 1.2rem;
-            border-left: 4px solid #c9ae8b;
-            font-style: italic;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-            color: #5c4a3b;
-        }
-
-        .pillar-list {
-            list-style: none;
-            margin-top: 0.5rem;
-        }
-
-        .pillar-list li {
-            margin-bottom: 0.7rem;
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
-
-        .pillar-list li i {
-            color: #aa8260;
-            width: 24px;
-            font-size: 1rem;
-            margin-top: 3px;
-        }
-
-        .history-chapter {
-            margin-bottom: 1.5rem;
-        }
-
-        .history-title {
-            font-family: 'Cormorant Garamont', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #8e735b;
-            margin: 1rem 0 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .history-title i {
-            font-size: 1.1rem;
-            color: #bc9a72;
-        }
-
-        /* Стиль для картинки — слева, меньше */
-        .chapter-image-left {
-            float: left;
-            width: 200px;
-            margin: 0 1.2rem 0.8rem 0;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #f2ece4;
-            border: 1px solid #e2d5c8;
-        }
-
-        /* Стиль для картинки — справа, чуть больше */
-        .chapter-image-right {
-            float: right;
-            width: 280px;
-            margin: 0 0 0.8rem 1.2rem;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #f2ece4;
-            border: 1px solid #e2d5c8;
-        }
-
-        /* Стиль для картинки — слева, чуть ниже (с дополнительным отступом сверху) */
-        .chapter-image-left-lower {
-            float: left;
-            width: 200px;
-            margin: 0.5rem 1.2rem 0.8rem 0;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #f2ece4;
-            border: 1px solid #e2d5c8;
-        }
-
-        .chapter-image-left img, .chapter-image-right img, .chapter-image-left-lower img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .image-caption {
-            font-size: 0.65rem;
-            color: #9b826b;
-            text-align: center;
-            padding: 0.4rem;
-            background: #faf7f2;
-            border-top: 1px solid #e9dfd3;
-            font-style: italic;
-        }
-
-        .clear-float {
-            clear: both;
-        }
-
-        hr {
-            border: none;
-            height: 1px;
-            background: linear-gradient(to right, #e0cfbf, transparent);
-            margin: 1rem 0;
-        }
-
-        .footer-note {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #b29b84;
-            border-top: 1px solid #ece1d5;
-            padding: 1.2rem;
-            background: #fefbf8;
-        }
-
-        /* ========== АНИМАЦИЯ ПОЯВЛЕНИЯ ТЕКСТА ========== */
-        .fade-item {
-            opacity: 0;
-            transform: translateY(12px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .fade-item:nth-child(1) { animation-delay: 0.05s; }
-        .fade-item:nth-child(2) { animation-delay: 0.10s; }
-        .fade-item:nth-child(3) { animation-delay: 0.15s; }
-        .fade-item:nth-child(4) { animation-delay: 0.20s; }
-        .fade-item:nth-child(5) { animation-delay: 0.25s; }
-        .fade-item:nth-child(6) { animation-delay: 0.30s; }
-        .fade-item:nth-child(7) { animation-delay: 0.35s; }
-        .fade-item:nth-child(8) { animation-delay: 0.40s; }
-        .fade-item:nth-child(9) { animation-delay: 0.45s; }
-        .fade-item:nth-child(10) { animation-delay: 0.50s; }
-        .fade-item:nth-child(11) { animation-delay: 0.55s; }
-        .fade-item:nth-child(12) { animation-delay: 0.60s; }
-        .fade-item:nth-child(13) { animation-delay: 0.65s; }
-        .fade-item:nth-child(14) { animation-delay: 0.70s; }
-        .fade-item:nth-child(15) { animation-delay: 0.75s; }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-title, .history-title {
-            opacity: 0;
-            transform: translateY(10px);
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        .section-title { animation-delay: 0s; }
-        .history-title { animation-delay: 0.02s; }
-
-        @media (max-width: 600px) {
-            .chapter-image-left, .chapter-image-right, .chapter-image-left-lower {
-                float: none;
-                width: 100%;
-                max-width: 280px;
-                margin: 0 auto 1rem auto;
-            }
-        }
-
-        @media (max-width: 700px) {
-            body { padding: 1rem; }
-            h1 { font-size: 2rem; }
-            .info-panel, .content { padding-left: 1.2rem; padding-right: 1.2rem; }
-            .section-title { font-size: 1.4rem; }
-            .history-title { font-size: 1.1rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
@@ -383,158 +37,89 @@
         </div>
 
         <div class="content">
-            <!-- ========== ПОЛНАЯ ИСТОРИЯ ========== -->
             <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-book-open"></i>
-                    <span>История Траина Углича</span>
-                </div>
+                <div class="section-title"><i class="fas fa-book-open"></i><span>История Траина Углича</span></div>
                 
-                <!-- ГЛАВА 1: Детство и проклятая руна -->
+                <!-- ГЛАВА 1 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-hammer"></i> Глава первая: Детство и проклятая руна</div>
-                    
-                    <div class="chapter-image-left fade-item">
-                        <img src="AClOY7r3HLLx_aoETd1Z7nleTOPT_wbhRVK-f7hi3cOkZUb_fxb-kl7Se-wHX6UwdUBr1cvuwSL2vG8V_K9wSRpPMA1wGXWC8WkAH_Q0i54FkmPQcWT-1Sxf_OmzDnpWDeW92YFc8qBb6BGzbSTSI8614wDTMF4VU28edefsmH2o51cs1MFOrdHi7hwE7xsYqIh8.png" 
-                             alt="Дельстейн — родной край Траина">
+                    <div class="chapter-image-left fade-item hover-zoom">
+                        <img src="AClOY7r3HLLx_aoETd1Z7nleTOPT_wbhRVK-f7hi3cOkZUb_fxb-kl7Se-wHX6UwdUBr1cvuwSL2vG8V_K9wSRpPMA1wGXWC8WkAH_Q0i54FkmPQcWT-1Sxf_OmzDnpWDeW92YFc8qBb6BGzbSTSI8614wDTMF4VU28edefsmH2o51cs1MFOrdHi7hwE7xsYqIh8.png" alt="Дельстейн">
                         <div class="image-caption">✦ Дельстейн — суровый край, где родился Траин ✦</div>
                     </div>
-                    
-                    <div class="section-text fade-item">
-                        Траин родился в Дельстейне, в семье кузнеца Ульда Углича. Мать умерла при родах, отец растил его сурово, брат Балин — жестоко. Траин был тихим и слишком много думал. Это бесило брата. 
-                        В детстве отец отправил Траина в часовню при старом храме — маленькую каменную церковь на окраине Карнхольма, где молились бедняки. Старая жрица, которую все звали просто Мать, учила детей читать, писать и молиться. Она никогда не называла имя своего бога. 
-                        Траин пробыл там около года, полюбил тишину храма, но отец забрал его: «мальчику нужно учиться держать молот».
-                    </div>
-                    <div class="section-text fade-item">
-                        В двенадцать лет отец показал Траину нижнюю кузницу — тайную комнату с древними артефактами. Там лежал чёрный камень с руной в виде раздвоенной молнии. Руна была тёплой, шептала, светилась холодным синим. 
-                        Траин тайком прикасался к ней. С того дня руна словно осталась с ним. Не на камне — внутри. Под кожей. В крови. Он чувствовал её, даже когда был далеко от подвала. 
-                        Балин узнал, ударил Траина, назвал колдуном и слабаком. С тех пор братья стали чужими.
-                    </div>
-                    
-                    <div class="chapter-image-right fade-item">
-                        <img src="34544f6aa5c1a8bedbe2ea13ac9a4375.jpg" 
-                             alt="Тайная кузница отца — чёрный камень с руной">
+                    <div class="section-text fade-item">Траин родился в Дельстейне, в семье кузнеца Ульда Углича. Мать умерла при родах, отец растил его сурово, брат Балин — жестоко. Траин был тихим и слишком много думал...</div>
+                    <div class="section-text fade-item">В двенадцать лет отец показал Траину нижнюю кузницу — тайную комнату с древними артефактами. Там лежал чёрный камень с руной в виде раздвоенной молнии...</div>
+                    <div class="chapter-image-right fade-item hover-zoom">
+                        <img src="34544f6aa5c1a8bedbe2ea13ac9a4375.jpg" alt="Тайная кузница">
                         <div class="image-caption">✦ Тайная кузница отца — чёрный камень с древней руной ✦</div>
                     </div>
-                    
-                    <div class="section-text fade-item">
-                        Отец умер, когда Траину было пятнадцать. Сердце. Прямо у горна. Балин обвинил Траина в проклятии. Кредиторы забрали кузницу. Братья остались на улице. Они попробовали работать наёмниками, но в первой же вылазке Балин избил должника до полусмерти. Траин попытался остановить брата. Балин сказал: «Ты слабак. Иди сдохни в чужих землях». 
-                        Траин не ударил в ответ. Разжал кулак и ушёл в снегопад. До сих пор не знает — это была сила или слабость.
-                    </div>
+                    <div class="section-text fade-item">Отец умер, когда Траину было пятнадцать. Сердце. Прямо у горна. Балин обвинил Траина в проклятии. Кредиторы забрали кузницу...</div>
                     <div class="clear-float"></div>
                 </div>
 
-                <!-- ГЛАВА 2: Двадцать лет в ордене + две картинки (справа и слева ниже) -->
+                <!-- ГЛАВА 2 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-shield-alt"></i> Глава вторая: Двадцать лет в ордене</div>
-                    
-                    <!-- Картинка справа (символ ордена) -->
-                    <div class="chapter-image-right fade-item">
-                        <img src="00aa4ab0912341fcb9f31386c7531fe1.jpg" 
-                             alt="Воинский орден Дельстейна">
-                        <div class="image-caption">✦ Воинский орден Дельстейна — старый, дисциплинированный, без лишних вопросов ✦</div>
+                    <div class="chapter-image-right fade-item hover-zoom">
+                        <img src="00aa4ab0912341fcb9f31386c7531fe1.jpg" alt="Воинский орден">
+                        <div class="image-caption">✦ Воинский орден Дельстейна — старый, дисциплинированный ✦</div>
                     </div>
-                    
-                    <div class="section-text fade-item">
-                        Траин не стал скитаться один. Он вступил в один из воинских орденов Дельстейна. Название того ордена он почти забыл — слишком много воды утекло, слишком много крови. Помнит только, что орден был старым, дисциплинированным и не задавал лишних вопросов. 
-                        Этот орден славился своей суровой школой: железная дисциплина, недельные переходы по снегам, боевые гимны, что пели у костров перед битвой. Их символ — скрещённые топоры на фоне восходящего солнца — выжигали на доспехах новобранцев. Они не были жестокими без нужды, но и жалости не знали.
-                    </div>
-                    
-                    <!-- Картинка слева чуть ниже (воин ордена) -->
-                    <div class="chapter-image-left-lower fade-item">
-                        <img src="36309ded6b1198eb6fdcf8b3b38f3c63.jpg" 
-                             alt="Один из воинов ордена Дельстейна">
+                    <div class="section-text fade-item">Траин не стал скитаться один. Он вступил в один из воинских орденов Дельстейна. Название того ордена он почти забыл...</div>
+                    <div class="chapter-image-left-lower fade-item hover-zoom">
+                        <img src="36309ded6b1198eb6fdcf8b3b38f3c63.jpg" alt="Воин ордена">
                         <div class="image-caption">✦ Один из воинов ордена — сталь и суровость ✦</div>
                     </div>
-                    
-                    <div class="section-text fade-item">
-                        Траин провёл там почти двадцать лет. Сражался. Поднимался по рангу. Учил новобранцев. Носил чужой символ на груди и делал чужую работу. Он никогда не верил в идеалы ордена — в Дельстейне не верят в идеалы, там верят в сталь и приказы. Но орден дал ему крышу над головой, еду и смысл. Траин платил верностью.
-                    </div>
-                    <div class="section-text fade-item">
-                        А потом что-то случилось. Траин не говорит, что. В ордене произошёл раскол, или его обвинили в чём-то, или он сам понял, что больше не может. Говорят, что в те годы старый орден раскололся надвое — одни остались верны древним устоям, другие пошли служить новым хозяевам. Траин оказался между ними. Он ушёл. Не с позором — с тяжёлым сердцем. С тех пор он ни в какие ордены не вступал. Доверие к братствам умерло вместе с той частью его души, которую он оставил в старых стенах.
-                    </div>
+                    <div class="section-text fade-item">Траин провёл там почти двадцать лет. Сражался. Поднимался по рангу. Учил новобранцев...</div>
+                    <div class="section-text fade-item">А потом что-то случилось. В ордене произошёл раскол... Он ушёл. Не с позором — с тяжёлым сердцем.</div>
                     <div class="clear-float"></div>
                 </div>
 
-                <!-- ГЛАВА 3: Таррах Мор · Глас, поднявший из пепла -->
+                <!-- ГЛАВА 3 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-dungeon"></i> Глава третья: Таррах Мор · Глас пустоши</div>
-                    <div class="section-text fade-item">
-                        После ухода из ордена Траин прибился к торговому каравану, который шёл через Таррах Мор в Соларнтир. Ему было уже под сорок. На четвёртую ночь караван уничтожили тени из пустоши. Траин остался единственным живым. 
-                        Он лежал среди трупов и умирал. И тогда он услышал голос. Не ушами — где-то внутри. Голос сказал: <strong>«Встань. Ещё не время»</strong>. Траин не знает, чей это был голос. Не знает, был ли это бог, дух Таррах Мора, галлюцинация или что-то ещё. Но он встал. Рана затянулась. 
-                        Руна внутри него проснулась по-настоящему. Та самая, что пришла к нему в детстве из чёрного камня в подвале отца. Теперь она пульсировала, давала силу, позволяла расти в бою — как у древних гигантов.
-                    </div>
-                    <div class="section-text fade-item">
-                        Он шёл три дня без еды и воды. Вышел к воротам Соларнтира, рухнул у стены. Ему было сорок два. Стража бросила ему хлеб, как собаке. Он попал в Соларнтир и просто остался там. Некуда было идти. Орден, которому он служил двадцать лет, остался в прошлом. Голос замолчал.
-                    </div>
+                    <div class="section-text fade-item">После ухода из ордена Траин прибился к торговому каравану... На четвёртую ночь караван уничтожили тени из пустоши. Траин остался единственным живым. И тогда он услышал голос: <strong>«Встань. Ещё не время»</strong>.</div>
+                    <div class="section-text fade-item">Он шёл три дня без еды и воды. Вышел к воротам Соларнтира, рухнул у стены. Ему было сорок два.</div>
                 </div>
 
-                <!-- ГЛАВА 4: Пёс Соларнтира -->
+                <!-- ГЛАВА 4 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-city"></i> Глава четвёртая: Пёс Соларнтира</div>
-                    <div class="section-text fade-item">
-                        Он попытался работать — его никуда не брали. Он украл хлеб. Судья дал выбор: тюрьма с «очищением болью» или служба. Траин выбрал службу. Пять лет он уже носит нашивку Соларнтира, выполняет приказы и ненавидит этот город. 
-                        Ему сорок семь. Он старше большинства солдат в казарме. У него седина в бороде и шрамы, о которых он не рассказывает. Руна внутри живёт своей жизнью. Иногда она молчит неделями. Иногда пульсирует так сильно, что Траин чувствует, как его кости растут, как мышцы наливаются силой древних гигантов. 
-                        Он не контролирует это. Он просто позволяет этому быть. Он слишком стар, чтобы бояться. И слишком устал, чтобы искать ответы.
-                    </div>
+                    <div class="section-text fade-item">Он попытался работать — его никуда не брали. Он украл хлеб. Судья дал выбор: тюрьма с «очищением болью» или служба. Траин выбрал службу...</div>
                 </div>
 
-                <!-- ГЛАВА 5: Тень ордена «Последний Глас» -->
+                <!-- ГЛАВА 5 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-landmark"></i> Глава пятая: Тень ордена «Последний Глас»</div>
-                    <div class="section-text fade-item">
-                        Была ещё одна деталь, которую Траин никому не рассказывал. Где-то в дорожных пыльных архивах Соларнтира он наткнулся на старое досье. В нём говорилось об Ордене <strong>«Последний Глас Берсерка»</strong>. Орден, что некогда был велик и сражался против Падижего Магнуса силой в тридцать тысяч мечей. 
-                        Их бог — Алый Аргентум, воплощение дисциплины и войны. Их символ — капля крови в ореоле огня. Траина почему-то зацепило это название. <strong>«Последний Глас»</strong>. Как тот голос, который сказал ему «Встань». 
-                        Он не знает, есть ли между ними связь. Скорее всего, нет. Но по ночам, когда он не может уснуть, он перебирает в голове эту мысль. Что если голос был не просто так? Что если он звал его не просто встать, а встать для чего-то? Для войны? Для мести? Для чего-то, что связано с этим Орденом? 
-                        Траин не знает. Может быть, он никогда не узнает.
-                    </div>
-                    <div class="quote-mini fade-item">
-                        <i class="fas fa-dice-d20"></i>   «Я не знаю, звал ли меня тот голос. Но если существует хоть искра, что моя руна связана с древним братством — я докопаюсь до правды. Не для славы. Для покоя».
-                    </div>
+                    <div class="section-text fade-item">В дорожных пыльных архивах Соларнтира он наткнулся на старое досье об Ордене <strong>«Последний Глас Берсерка»</strong>...</div>
+                    <div class="quote-mini fade-item"><i class="fas fa-dice-d20"></i> «Я не знаю, звал ли меня тот голос...»</div>
                 </div>
             </div>
 
-            <!-- ========== СТРАХ ========== -->
+            <!-- СТРАХ -->
             <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-eye"></i> 
-                    <span>Страх, что гложет изнутри</span>
-                </div>
-                <div class="section-text fade-item">
-                    Траин боится не смерти. Смерть была бы даже облегчением. Он боится <strong>потерять последнюю искру своей воли</strong> — превратиться в бессловесное орудие, в цепного пса, который забыл, зачем он дышит. 
-                    Он боится, что руна внутри однажды поглотит его разум, оставив лишь жажду разрушения. Боится <strong>предать себя снова</strong>, как тогда, когда ушёл из ордена с тяжёлым сердцем, так и не поняв — был ли он трусом или честным перед самим собой.
-                </div>
-                <div class="quote-mini fade-item">
-                    <i class="fas fa-quote-left"></i>  «Я не боюсь удара мечом. Я боюсь проснуться и не узнать своё лицо в зеркале. Боюсь, что однажды руна заговорит вместо меня».
-                </div>
+                <div class="section-title"><i class="fas fa-eye"></i><span>Страх, что гложет изнутри</span></div>
+                <div class="section-text fade-item">Траин боится не смерти... Он боится потерять последнюю искру своей воли — превратиться в бессловесное орудие...</div>
+                <div class="quote-mini fade-item"><i class="fas fa-quote-left"></i> «Я не боюсь удара мечом. Я боюсь проснуться и не узнать своё лицо...»</div>
             </div>
 
-            <!-- ========== ЦЕЛИ ========== -->
+            <!-- ЦЕЛИ -->
             <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-bullseye"></i>
-                    <span>Цели, что ведут вперёд</span>
-                </div>
-                <div class="section-text">
-                    <ul class="pillar-list">
-                        <li class="fade-item"><i class="fas fa-shield-halbed"></i> <strong>Обрести ответ</strong> — узнать природу голоса, сказавшего «Встань». Понять, был ли это бог, дух или всего лишь умирающий мозг.</li>
-                        <li class="fade-item"><i class="fas fa-hand-fist"></i> <strong>Вернуть себе имя</strong> — перестать быть «псом Соларнтира». Заработать или отнять свободу, чтобы смотреть в глаза без стыда.</li>
-                        <li class="fade-item"><i class="fas fa-dragon"></i> <strong>Принять руну</strong> — либо научиться управлять её силой, либо найти способ усыпить её, прежде чем она сломает его.</li>
-                        <li class="fade-item"><i class="fas fa-skull"></i> <strong>Не умереть никем</strong> — оставить след, пусть даже в виде выжженной руны на камне, чтобы кто-то вспомнил: Траин Углич существовал не только для приказов.</li>
-                    </ul>
-                </div>
+                <div class="section-title"><i class="fas fa-bullseye"></i><span>Цели, что ведут вперёд</span></div>
+                <ul class="pillar-list">
+                    <li class="fade-item"><i class="fas fa-shield-halbed"></i> <strong>Обрести ответ</strong> — узнать природу голоса, сказавшего «Встань».</li>
+                    <li class="fade-item"><i class="fas fa-hand-fist"></i> <strong>Вернуть себе имя</strong> — перестать быть «псом Соларнтира».</li>
+                    <li class="fade-item"><i class="fas fa-dragon"></i> <strong>Принять руну</strong> — научиться управлять её силой.</li>
+                    <li class="fade-item"><i class="fas fa-skull"></i> <strong>Не умереть никем</strong> — оставить след.</li>
+                </ul>
             </div>
 
             <hr>
-            <div class="section-text fade-item" style="font-size: 0.85rem; color:#6a5a4b;">
-                <i class="fas fa-comment-dots"></i>  «Больше всего я боюсь однажды проснуться и понять, что стал тем, кого презирал — слепым исполнителем без чести и памяти. Руна внутри — это не дар и не проклятие. Это экзамен. И я ещё не знаю, сдам ли его».
-            </div>
+            <div class="section-text fade-item" style="font-size:0.85rem; color:#6a5a4b;"><i class="fas fa-comment-dots"></i> «Руна внутри — это не дар и не проклятие. Это экзамен. И я ещё не знаю, сдам ли его».</div>
         </div>
 
-        <div class="footer-note">
-            <i class="fas fa-scroll"></i>  Квента персонажа · архив вольного клинка · Дельстейн — Соларнтир
-        </div>
+        <div class="footer-note"><i class="fas fa-scroll"></i> Квента персонажа · архив вольного клинка · Дельстейн — Соларнтир</div>
     </div>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
