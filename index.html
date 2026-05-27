@@ -512,7 +512,7 @@
         ru: [
             { name: "Балсмег Скальный", class: "Варвар (Берсерк) · Полуорк", thought: "«Гроза полей и врагов. Когда Балсмег идёт в атаку — земля дрожит. Я бы не хотел оказаться на его пути. Надёжен, как гранитная скала.»" },
             { name: "Вейл Кр'ант", class: "Друид (Круг спор) · Тифлинг", thought: "«Тихий и задумчивый. Смотрит на мир иначе — как будто слышит то, чего не слышим мы. В бою неожиданно опасен. Доверяю его чутью.»" },
-            { name: "Шесть", class: "Жрец (Домен жизни) · Зверолюд-заяц", thought: "«Дочь вождя заячьего племени. Добровольцем ушла на войну — выжила чудом. Вторая война — рабство на долгие годы. Лечит других, а сама — оружие без права выбора. Слишком похоже на меня. Я был псом Соларнтира, она — рабыня с верой. И это страшит — видеть, как достойный воин служит не по своей воле.»" },
+            { name: "Шесть", class: "Жрец (Домен жизни) · Зверолюд-заяц", thought: "«Дочь вождя заячьего племени. Добровольцем ушла на войну — выжила чудом. Вторая война — рабство на долгие годы. Лечит других, а сама — оружие без права выбора.»" },
             { name: "Каладан Броувер", class: "Паладин (Клятва Преступник) · Человек", thought: "«Тёмная лошадка. Его клятва — не обычная клятва паладина, в ней чувствуется горечь и утрата. Но держит слово крепко. Я таких уважаю.»" },
             { name: "Биатрис Пакив (Кладрае)", class: "Колдун (Временной маг) · Дроу", thought: "«Эльфы... Ненавижу эльфов. Все эти их ужимки, столетние взгляды и магия из пальца. Но эта... она странная даже для дроу. Время крутит, как пряжу. Бесит, но без неё мы бы уже трижды умерли. Пространственный куб её — единственная вещь, которую я у эльфа не хочу разбить молотом. Ладно, пусть идёт рядом. Пока что.»" },
             { name: "Клэр Фаерфлай", class: "Следопыт (Сумрачный охотник) · Совлин", thought: "«Совлин. Птица, значит. В темноте видит лучше меня, а я не люблю, когда кто-то видит лучше дворфа. Исчезает в тенях так, что сам чёрт ногу сломит. Спрашиваю её — \"ты где?\", а она уже за спиной. Бесит. Но на разведку — лучше не найти.»" },
@@ -521,7 +521,7 @@
         en: [
             { name: "Balsmeg Rockborn", class: "Barbarian (Berserker) · Half-Orc", thought: "«A storm of fields and foes. When Balsmeg charges — the earth trembles. I wouldn't want to be in his way. Reliable as granite.»" },
             { name: "Veil Kr'ant", class: "Druid (Circle of Spores) · Tiefling", thought: "«Quiet and thoughtful. Sees the world differently — as if hearing what we can't. Dangerous in battle when least expected. I trust his instincts.»" },
-            { name: "Six", class: "Cleric (Life Domain) · Harengon", thought: "«Daughter of a hare tribe chieftain. Volunteered for war — survived by a miracle. The second war ended in slavery for years. Heals others, yet she's a weapon with no choice. Too familiar. I was Solarntir's dog, she's a slave with faith. That terrifies me — seeing a worthy warrior serve against their will.»" },
+            { name: "Six", class: "Cleric (Life Domain) · Harengon", thought: "«Daughter of a hare tribe chieftain. Volunteered for war — survived by a miracle. Second war — slavery for years. Heals others, yet she's a weapon with no choice.»" },
             { name: "Khaladan Brower", class: "Paladin (Oathbreaker) · Human", thought: "«A dark horse. His oath isn't a typical paladin's — there's bitterness and loss in it. But he keeps his word. I respect that.»" },
             { name: "Beatrice Pakiv (Kladrae)", class: "Warlock (Chronomancer) · Drow", thought: "«Elves... I hate elves. Their mannerisms, centuries-old stares, magic from a finger. But this one... she's strange even for a drow. Twists time like yarn. Infuriating, but without her we'd be dead thrice over. Her spatial cube is the only elven thing I don't want to smash with a hammer. Fine, she can walk beside me. For now.»" },
             { name: "Claire Firefly", class: "Ranger (Gloom Stalker) · Owlin", thought: "«An owlin. A bird, then. Sees better in darkness than me, and I don't like anyone seeing better than a dwarf. Disappears into shadows like a ghost. I ask 'where are you?' — and she's already behind me. Infuriating. But for scouting — none better.»" },
@@ -568,6 +568,19 @@
         
         if (lang === 'ru') {
             document.getElementById('mainSub').innerText = 'Рунный рыцарь · бывший воин ордена · солдат без веры';
+            document.getElementById('badge1').innerText = 'Живая руна · Раздвоенная молния';
+            document.getElementById('badge2').innerText = '47 зим · Дельстейн';
+            document.getElementById('label1').innerText = 'Пол / Возраст';
+            document.getElementById('val1').innerText = 'Мужчина, 47 лет';
+            document.getElementById('label2').innerText = 'Рождение';
+            document.getElementById('val2').innerText = 'Дельстейн, род Углич (кузнецы)';
+            document.getElementById('label3').innerText = 'Ремесло';
+            document.getElementById('val3').innerText = 'Бывший воин · солдат Соларнтира';
+            document.getElementById('label4').innerText = 'Древняя руна';
+            document.getElementById('val4').innerHTML = '<i class="fas fa-bolt"></i> Внутрикровная · сила гигантов';
+            document.getElementById('label5').innerText = 'Служба';
+            document.getElementById('val5').innerText = '20 лет в воинском ордене Дельстейна';
+            
             document.getElementById('historyTitle').innerText = 'История Траина Углича';
             document.getElementById('ch1Title').innerText = 'Глава первая: Детство и проклятая руна';
             document.getElementById('ch2Title').innerText = 'Глава вторая: Двадцать лет в ордене';
@@ -577,6 +590,7 @@
             document.getElementById('fearTitle').innerText = 'Страх, что гложет изнутри';
             document.getElementById('goalsTitle').innerText = 'Цели, что ведут вперёд';
             document.getElementById('footerText').innerText = 'Квента персонажа · архив вольного клинка · Дельстейн — Соларнтир';
+            
             document.getElementById('ch1Text1').innerHTML = 'Траин родился в Дельстейне, в семье кузнеца Ульда Углича. Мать умерла при родах, отец растил его сурово, брат Балин — жестоко. Траин был тихим и слишком много думал. Это бесило брата. В детстве отец отправил Траина в часовню при старом храме — маленькую каменную церковь на окраине Карнхольма, где молились бедняки. Старая жрица, которую все звали просто Мать, учила детей читать, писать и молиться. Она никогда не называла имя своего бога. Траин пробыл там около года, полюбил тишину храма, но отец забрал его: «мальчику нужно учиться держать молот».';
             document.getElementById('ch1Text2').innerHTML = 'В двенадцать лет отец показал Траину нижнюю кузницу — тайную комнату с древними артефактами. Там лежал чёрный камень с руной в виде раздвоенной молнии. Руна была тёплой, шептала, светилась холодным синим. Траин тайком прикасался к ней. С того дня руна словно осталась с ним. Не на камне — внутри. Под кожей. В крови. Он чувствовал её, даже когда был далеко от подвала. Балин узнал, ударил Траина, назвал колдуном и слабаком. С тех пор братья стали чужими.';
             document.getElementById('ch1Text3').innerHTML = 'Отец умер, когда Траину было пятнадцать. Сердце. Прямо у горна. Балин обвинил Траина в проклятии. Кредиторы забрали кузницу. Братья остались на улице. Они попробовали работать наёмниками, но в первой же вылазке Балин избил должника до полусмерти. Траин попытался остановить брата. Балин сказал: «Ты слабак. Иди сдохни в чужих землях». Траин не ударил в ответ. Разжал кулак и ушёл в снегопад. До сих пор не знает — это была сила или слабость.';
@@ -596,6 +610,19 @@
             document.getElementById('finalQuote').innerHTML = '«Больше всего я боюсь однажды проснуться и понять, что стал тем, кого презирал — слепым исполнителем без чести и памяти. Руна внутри — это не дар и не проклятие. Это экзамен. И я ещё не знаю, сдам ли его».';
         } else {
             document.getElementById('mainSub').innerText = 'Rune Knight · former Order warrior · soldier without faith';
+            document.getElementById('badge1').innerText = 'Living Rune · Forked Lightning';
+            document.getElementById('badge2').innerText = '47 winters · Delstein';
+            document.getElementById('label1').innerText = 'Gender / Age';
+            document.getElementById('val1').innerText = 'Male, 47 years';
+            document.getElementById('label2').innerText = 'Birth';
+            document.getElementById('val2').innerText = 'Delstein, Uglich family (blacksmiths)';
+            document.getElementById('label3').innerText = 'Craft';
+            document.getElementById('val3').innerText = 'Former warrior · soldier of Solarntir';
+            document.getElementById('label4').innerText = 'Ancient Rune';
+            document.getElementById('val4').innerHTML = '<i class="fas fa-bolt"></i> Bloodborne · Giant\'s strength';
+            document.getElementById('label5').innerText = 'Service';
+            document.getElementById('val5').innerText = '20 years in the military order of Delstein';
+            
             document.getElementById('historyTitle').innerText = 'The Story of Train Uglich';
             document.getElementById('ch1Title').innerText = 'Chapter One: Childhood and the Cursed Rune';
             document.getElementById('ch2Title').innerText = 'Chapter Two: Twenty Years in the Order';
@@ -605,6 +632,7 @@
             document.getElementById('fearTitle').innerText = 'The Fear that Gnaws Within';
             document.getElementById('goalsTitle').innerText = 'Goals that Lead Forward';
             document.getElementById('footerText').innerText = 'Character Quest · free blade archive · Delstein — Solarntir';
+            
             document.getElementById('ch1Text1').innerHTML = 'Train was born in Delstein, in the family of blacksmith Uld Uglich. His mother died in childbirth, his father raised him harshly, his brother Balin — cruelly. Train was quiet and thought too much. This enraged his brother. As a child, his father sent Train to a chapel at an old temple — a small stone church on the outskirts of Karnholm, where the poor prayed. An old priestess, whom everyone simply called Mother, taught children to read, write, and pray. She never named her god. Train stayed there for about a year, loved the silence of the temple, but his father took him back: "a boy needs to learn to hold a hammer."';
             document.getElementById('ch1Text2').innerHTML = 'At twelve, his father showed Train the lower forge — a secret room with ancient artifacts. There lay a black stone with a rune in the shape of a split lightning bolt. The rune was warm, whispered, glowed cold blue. Train secretly touched it. From that day, the rune remained with him. Not on the stone — inside. Under the skin. In the blood. He felt it even when far from the cellar. Balin found out, struck Train, called him a sorcerer and a weakling. From then on, the brothers became strangers.';
             document.getElementById('ch1Text3').innerHTML = 'His father died when Train was fifteen. Heart. Right at the forge. Balin blamed Train for the curse. Creditors took the forge. The brothers were left on the street. They tried to work as mercenaries, but in the first sortie, Balin beat a debtor half to death. Train tried to stop his brother. Balin said: "You\'re a weakling. Go die in foreign lands." Train didn\'t strike back. He unclenched his fist and walked into the snowfall. He still doesn\'t know — was that strength or weakness.';
