@@ -12,7 +12,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             background: #e8e0d5;
             background-image: radial-gradient(circle at 20% 30%, rgba(180, 150, 120, 0.08) 2%, transparent 2.5%);
@@ -22,12 +21,10 @@
             line-height: 1.55;
             padding: 2rem 1.5rem;
         }
-
         .container {
             max-width: 1000px;
             margin: 0 auto;
         }
-
         .dossier {
             background: #fffcf7;
             border-radius: 24px;
@@ -35,14 +32,12 @@
             overflow: hidden;
             border: 1px solid #e2d5c8;
         }
-
         .header {
             background: #f5efe8;
             padding: 1.8rem 2rem 1.2rem 2rem;
             border-bottom: 2px solid #cbbfae;
             position: relative;
         }
-
         .rune-line {
             display: flex;
             align-items: center;
@@ -53,7 +48,6 @@
             font-family: monospace;
             margin-bottom: 0.75rem;
         }
-
         h1 {
             font-family: 'Cormorant Garamont', serif;
             font-size: 2.8rem;
@@ -62,7 +56,6 @@
             letter-spacing: -0.5px;
             margin: 0.25rem 0 0.2rem;
         }
-
         .sub {
             color: #7d6652;
             font-size: 0.85rem;
@@ -70,8 +63,6 @@
             padding-left: 1rem;
             margin-top: 0.4rem;
         }
-
-        /* Кнопка "Товарищи" */
         .comrades-btn {
             position: absolute;
             top: 1.8rem;
@@ -90,14 +81,11 @@
             gap: 8px;
             font-family: 'Inter', sans-serif;
         }
-
         .comrades-btn:hover {
             background: #bc9a72;
             color: #1f1915;
             transform: scale(1.02);
         }
-
-        /* Модальное окно */
         .modal {
             display: none;
             position: fixed;
@@ -111,11 +99,9 @@
             justify-content: center;
             align-items: center;
         }
-
         .modal.active {
             display: flex;
         }
-
         .modal-content {
             background: #fffcf7;
             border-radius: 24px;
@@ -127,18 +113,10 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             animation: modalFadeIn 0.3s ease;
         }
-
         @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         .modal-header {
             background: #f5efe8;
             padding: 1rem 1.5rem;
@@ -147,13 +125,11 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .modal-header h3 {
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.5rem;
             color: #3a2c22;
         }
-
         .modal-close {
             background: none;
             border: none;
@@ -162,26 +138,21 @@
             color: #9b7b5e;
             transition: 0.2s;
         }
-
         .modal-close:hover {
             color: #bc5a38;
         }
-
         .comrade-list {
             padding: 1rem 1.5rem;
         }
-
         .comrade-card {
             display: flex;
             gap: 1rem;
             padding: 1rem 0;
             border-bottom: 1px solid #e9dfd3;
         }
-
         .comrade-card:last-child {
             border-bottom: none;
         }
-
         .comrade-icon {
             width: 50px;
             height: 50px;
@@ -193,22 +164,18 @@
             border: 1px solid #dacbbc;
             flex-shrink: 0;
         }
-
         .comrade-icon i {
             font-size: 1.5rem;
             color: #aa8260;
         }
-
         .comrade-info {
             flex: 1;
         }
-
         .comrade-name {
             font-weight: 700;
             font-size: 1.1rem;
             color: #3a2c22;
         }
-
         .comrade-class {
             font-size: 0.7rem;
             color: #9b826b;
@@ -216,18 +183,15 @@
             letter-spacing: 1px;
             margin-bottom: 0.3rem;
         }
-
         .comrade-thought {
             font-size: 0.85rem;
             color: #5c4a3b;
             font-style: italic;
         }
-
         .comrade-thought i {
             color: #bc9a72;
             margin-right: 4px;
         }
-
         .info-panel {
             display: flex;
             flex-wrap: wrap;
@@ -235,7 +199,6 @@
             padding: 2rem 2rem 0.8rem 2rem;
             border-bottom: 1px solid #e9dfd3;
         }
-
         .avatar {
             flex: 1;
             min-width: 180px;
@@ -244,7 +207,6 @@
             align-items: center;
             gap: 0.8rem;
         }
-
         .rune-symbol {
             width: 130px;
             height: 130px;
@@ -256,12 +218,10 @@
             border: 1px solid #dacbbc;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
-
         .rune-symbol i {
             font-size: 3.8rem;
             color: #aa8260;
         }
-
         .badge {
             background: #f3ede6;
             padding: 0.3rem 1rem;
@@ -270,19 +230,16 @@
             color: #6e5440;
             border: 1px solid #dfd0c0;
         }
-
         .traits {
             flex: 2.5;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 0.8rem 1.5rem;
         }
-
         .trait-item {
             border-bottom: 1px solid #e5d9ce;
             padding-bottom: 0.4rem;
         }
-
         .trait-label {
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -290,22 +247,18 @@
             color: #9b826b;
             font-weight: 500;
         }
-
         .trait-value {
             font-size: 0.95rem;
             font-weight: 500;
             color: #3e3026;
             margin-top: 0.2rem;
         }
-
         .content {
             padding: 1.2rem 2rem 2rem 2rem;
         }
-
         .section {
             margin-bottom: 2.2rem;
         }
-
         .section-title {
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.7rem;
@@ -318,18 +271,15 @@
             padding-bottom: 0.3rem;
             margin-bottom: 1rem;
         }
-
         .section-title i {
             font-size: 1.4rem;
             color: #bc9a72;
         }
-
         .section-text {
             color: #3d3229;
             text-align: justify;
             margin-bottom: 0.75rem;
         }
-
         .quote-mini {
             background: #faf5ef;
             padding: 0.8rem 1.2rem;
@@ -339,30 +289,25 @@
             font-size: 0.9rem;
             color: #5c4a3b;
         }
-
         .pillar-list {
             list-style: none;
             margin-top: 0.5rem;
         }
-
         .pillar-list li {
             margin-bottom: 0.7rem;
             display: flex;
             align-items: baseline;
             gap: 10px;
         }
-
         .pillar-list li i {
             color: #aa8260;
             width: 24px;
             font-size: 1rem;
             margin-top: 3px;
         }
-
         .history-chapter {
             margin-bottom: 1.5rem;
         }
-
         .history-title {
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.3rem;
@@ -373,12 +318,10 @@
             align-items: center;
             gap: 8px;
         }
-
         .history-title i {
             font-size: 1.1rem;
             color: #bc9a72;
         }
-
         .chapter-image-left {
             float: left;
             width: 200px;
@@ -390,7 +333,6 @@
             border: 1px solid #e2d5c8;
             transition: all 0.3s ease;
         }
-
         .chapter-image-right {
             float: right;
             width: 280px;
@@ -402,7 +344,6 @@
             border: 1px solid #e2d5c8;
             transition: all 0.3s ease;
         }
-
         .chapter-image-left-lower {
             float: left;
             width: 200px;
@@ -414,16 +355,13 @@
             border: 1px solid #e2d5c8;
             transition: all 0.3s ease;
         }
-
         .hover-zoom {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .hover-zoom:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(188, 106, 56, 0.3);
         }
-
         .chapter-image-left img, 
         .chapter-image-right img, 
         .chapter-image-left-lower img {
@@ -431,7 +369,6 @@
             height: auto;
             display: block;
         }
-
         .image-caption {
             font-size: 0.65rem;
             color: #9b826b;
@@ -441,18 +378,15 @@
             border-top: 1px solid #e9dfd3;
             font-style: italic;
         }
-
         .clear-float {
             clear: both;
         }
-
         hr {
             border: none;
             height: 1px;
             background: linear-gradient(to right, #e0cfbf, transparent);
             margin: 1rem 0;
         }
-
         .footer-note {
             text-align: center;
             font-size: 0.7rem;
@@ -461,33 +395,27 @@
             padding: 1.2rem;
             background: #fefbf8;
         }
-
         .fade-item {
             opacity: 0;
             transform: translateY(12px);
             animation: fadeInUp 0.6s ease forwards;
         }
-
         .fade-item:nth-child(1) { animation-delay: 0.05s; }
         .fade-item:nth-child(2) { animation-delay: 0.10s; }
         .fade-item:nth-child(3) { animation-delay: 0.15s; }
         .fade-item:nth-child(4) { animation-delay: 0.20s; }
         .fade-item:nth-child(5) { animation-delay: 0.25s; }
-
         @keyframes fadeInUp {
             0% { opacity: 0; transform: translateY(12px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-
         .section-title, .history-title {
             opacity: 0;
             transform: translateY(10px);
             animation: fadeInUp 0.5s ease forwards;
         }
-
         .section-title { animation-delay: 0s; }
         .history-title { animation-delay: 0.02s; }
-
         @media (max-width: 600px) {
             .chapter-image-left, .chapter-image-right, .chapter-image-left-lower {
                 float: none;
@@ -506,7 +434,6 @@
                 gap: 0.5rem;
             }
         }
-
         @media (max-width: 700px) {
             body { padding: 1rem; }
             h1 { font-size: 2rem; }
@@ -548,8 +475,6 @@
         <div class="content">
             <div class="section">
                 <div class="section-title"><i class="fas fa-book-open"></i><span>История Траина Углича</span></div>
-                
-                <!-- ГЛАВА 1 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-hammer"></i> Глава первая: Детство и проклятая руна</div>
                     <div class="chapter-image-left fade-item hover-zoom">
@@ -565,8 +490,6 @@
                     <div class="section-text fade-item">Отец умер, когда Траину было пятнадцать. Сердце. Прямо у горна. Балин обвинил Траина в проклятии. Кредиторы забрали кузницу. Братья остались на улице. Они попробовали работать наёмниками, но в первой же вылазке Балин избил должника до полусмерти. Траин попытался остановить брата. Балин сказал: «Ты слабак. Иди сдохни в чужих землях». Траин не ударил в ответ. Разжал кулак и ушёл в снегопад. До сих пор не знает — это была сила или слабость.</div>
                     <div class="clear-float"></div>
                 </div>
-
-                <!-- ГЛАВА 2 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-shield-alt"></i> Глава вторая: Двадцать лет в ордене</div>
                     <div class="chapter-image-right fade-item hover-zoom">
@@ -581,36 +504,26 @@
                     <div class="section-text fade-item">Траин провёл там почти двадцать лет. Сражался. Поднимался по рангу. Учил новобранцев. Носил чужой символ на груди и делал чужую работу. Он никогда не верил в идеалы ордена — в Дельстейне не верят в идеалы, там верят в сталь и приказы. Но орден дал ему крышу над головой, еду и смысл. Траин платил верностью. А потом что-то случилось. В ордене произошёл раскол. Траин оказался между двумя сторонами. Он ушёл. Не с позором — с тяжёлым сердцем.</div>
                     <div class="clear-float"></div>
                 </div>
-
-                <!-- ГЛАВА 3 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-dungeon"></i> Глава третья: Таррах Мор · Глас пустоши</div>
                     <div class="section-text fade-item">После ухода из ордена Траин прибился к торговому каравану, который шёл через Таррах Мор в Соларнтир. Ему было уже под сорок. На четвёртую ночь караван уничтожили тени из пустоши. Траин остался единственным живым. Он лежал среди трупов и умирал. И тогда он услышал голос. Не ушами — где-то внутри. Голос сказал: <strong>«Встань. Ещё не время»</strong>. Он встал. Рана затянулась. Руна внутри проснулась по-настоящему.</div>
                     <div class="section-text fade-item">Он шёл три дня без еды и воды. Вышел к воротам Соларнтира, рухнул у стены. Ему было сорок два. Стража бросила ему хлеб, как собаке. Он попал в Соларнтир и просто остался там.</div>
                 </div>
-
-                <!-- ГЛАВА 4 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-city"></i> Глава четвёртая: Пёс Соларнтира</div>
                     <div class="section-text fade-item">Он попытался работать — его никуда не брали. Он украл хлеб. Судья дал выбор: тюрьма с «очищением болью» или служба. Траин выбрал службу. Пять лет он уже носит нашивку Соларнтира, выполняет приказы и ненавидит этот город. Ему сорок семь. Руна внутри живёт своей жизнью. Иногда молчит неделями. Иногда пульсирует так, что кости растут. Он слишком стар, чтобы бояться. И слишком устал, чтобы искать ответы.</div>
                 </div>
-
-                <!-- ГЛАВА 5 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-landmark"></i> Глава пятая: Тень ордена «Последний Глас»</div>
                     <div class="section-text fade-item">В дорожных пыльных архивах Соларнтира он наткнулся на старое досье об Ордене <strong>«Последний Глас Берсерка»</strong>. Тридцать тысяч мечей, сражавшихся против Падижего Магнуса. Их бог — Алый Аргентум. Символ — капля крови в ореоле огня. Траина зацепило название. «Последний Глас». Как тот голос, сказавший «Встань».</div>
                     <div class="quote-mini fade-item"><i class="fas fa-dice-d20"></i> «Я не знаю, звал ли меня тот голос. Но если есть хоть искра связи — я докопаюсь до правды».</div>
                 </div>
             </div>
-
-            <!-- СТРАХ -->
             <div class="section">
                 <div class="section-title"><i class="fas fa-eye"></i><span>Страх, что гложет изнутри</span></div>
                 <div class="section-text fade-item">Траин боится не смерти. Он боится <strong>потерять последнюю искру своей воли</strong> — превратиться в бессловесное орудие. Боится, что руна поглотит его разум. Боится предать себя снова.</div>
                 <div class="quote-mini fade-item"><i class="fas fa-quote-left"></i> «Я не боюсь удара мечом. Я боюсь проснуться и не узнать своё лицо».</div>
             </div>
-
-            <!-- ЦЕЛИ -->
             <div class="section">
                 <div class="section-title"><i class="fas fa-bullseye"></i><span>Цели, что ведут вперёд</span></div>
                 <ul class="pillar-list">
@@ -620,16 +533,13 @@
                     <li class="fade-item"><i class="fas fa-skull"></i> <strong>Не умереть никем</strong> — оставить след.</li>
                 </ul>
             </div>
-
             <hr>
             <div class="section-text fade-item" style="font-size:0.85rem; color:#6a5a4b;"><i class="fas fa-comment-dots"></i> «Руна внутри — это экзамен. И я ещё не знаю, сдам ли его».</div>
         </div>
-
         <div class="footer-note"><i class="fas fa-scroll"></i> Квента персонажа · архив вольного клинка · Дельстейн — Соларнтир</div>
     </div>
 </div>
 
-<!-- МОДАЛЬНОЕ ОКНО "ТОВАРИЩИ" -->
 <div id="comradesModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -658,7 +568,7 @@
                 <div class="comrade-info">
                     <div class="comrade-name">Шесть</div>
                     <div class="comrade-class">Жрец (Домен жизни) · Зверолюд-заяц</div>
-                    <div class="comrade-thought"><i class="fas fa-quote-left"></i> «Маленький, быстрый и невероятно живучий. Верит в своё божество сильнее, чем я когда-либо верил во что-то. Лечит раны и не задаёт лишних вопросов. Рядом с ним становится спокойнее.»</div>
+                    <div class="comrade-thought"><i class="fas fa-quote-left"></i> «Дочь вождя заячьего племени. Добровольцем ушла на войну — выжила чудом. Вторая война — рабство на долгие годы. Лечит других, а сама — оружие без права выбора. Слишком похоже на меня. Я был псом Соларнтира, она — рабыня с верой. И это страшит — видеть, как достойный воин служит не по своей воле.»</div>
                 </div>
             </div>
             <div class="comrade-card">
@@ -674,41 +584,21 @@
 </div>
 
 <script>
-    // Модальное окно "Товарищи"
     const modal = document.getElementById('comradesModal');
     const openBtn = document.getElementById('comradesBtn');
     const closeBtn = document.getElementById('closeModalBtn');
-
-    function openModal() {
-        modal.classList.add('active');
-    }
-
-    function closeModal() {
-        modal.classList.remove('active');
-    }
-
+    function openModal() { modal.classList.add('active'); }
+    function closeModal() { modal.classList.remove('active'); }
     openBtn.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
-
-    // Закрытие по клику вне окна
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-
-    // Анимация руны
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
     const runeSymbol = document.querySelector('.rune-symbol i');
     if (runeSymbol) {
         setInterval(() => {
             runeSymbol.style.textShadow = '0 0 8px #d47f58';
-            setTimeout(() => {
-                runeSymbol.style.textShadow = 'none';
-            }, 200);
+            setTimeout(() => { runeSymbol.style.textShadow = 'none'; }, 200);
         }, 3000);
     }
-
-    console.log('Квента Траина Углича загружена. Кнопка "Товарищи" работает.');
 </script>
 </body>
 </html>
