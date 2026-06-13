@@ -76,8 +76,11 @@
             align-items: center;
             gap: 8px;
             font-family: 'Inter', sans-serif;
+            z-index: 10;
         }
         .lang-btn:hover, .comrades-btn:hover { background: #bc9a72; color: #1f1915; transform: scale(1.02); }
+        
+        /* Модальное окно товарищей */
         .modal {
             display: none;
             position: fixed;
@@ -164,6 +167,60 @@
             font-style: italic;
         }
         .comrade-thought i { color: #bc9a72; margin-right: 4px; }
+        
+        /* Галерея и полноэкранный просмотр */
+        .image-gallery {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .image-gallery:hover {
+            filter: brightness(1.05) contrast(1.05);
+            box-shadow: 0 0 15px rgba(188, 106, 56, 0.5), 0 0 30px rgba(188, 106, 56, 0.3);
+            transform: scale(1.01);
+        }
+        
+        /* Fullscreen модалка для картинок */
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .fullscreen-modal.active {
+            display: flex;
+        }
+        .fullscreen-modal img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+        .fullscreen-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 3001;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .fullscreen-close:hover {
+            color: #bc9a72;
+            transform: scale(1.1);
+        }
+        
         .info-panel {
             display: flex;
             flex-wrap: wrap;
@@ -190,7 +247,7 @@
             border: 1px solid #dacbbc;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
-        .rune-symbol i { font-size: 3.8rem; color: #aa8260; }
+        .rune-symbol i { font-size: 3.8rem; color: #aa8260; transition: text-shadow 0.2s; }
         .badge {
             background: #f3ede6;
             padding: 0.3rem 1rem;
@@ -312,17 +369,11 @@
             border: 1px solid #e2d5c8;
             transition: all 0.3s ease;
         }
-        .hover-zoom {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-zoom:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(188, 106, 56, 0.3);
-        }
         .chapter-image-left img, .chapter-image-right img, .chapter-image-left-lower img {
             width: 100%;
             height: auto;
             display: block;
+            cursor: pointer;
         }
         .image-caption {
             font-size: 0.65rem;
@@ -332,6 +383,7 @@
             background: #faf7f2;
             border-top: 1px solid #e9dfd3;
             font-style: italic;
+            cursor: pointer;
         }
         .clear-float { clear: both; }
         hr {
@@ -429,13 +481,13 @@
                 <!-- ГЛАВА 1 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-hammer"></i><span id="ch1Title">Глава первая: Детство и проклятая руна</span></div>
-                    <div class="chapter-image-left fade-item hover-zoom">
+                    <div class="chapter-image-left fade-item image-gallery">
                         <img src="AClOY7r3HLLx_aoETd1Z7nleTOPT_wbhRVK-f7hi3cOkZUb_fxb-kl7Se-wHX6UwdUBr1cvuwSL2vG8V_K9wSRpPMA1wGXWC8WkAH_Q0i54FkmPQcWT-1Sxf_OmzDnpWDeW92YFc8qBb6BGzbSTSI8614wDTMF4VU28edefsmH2o51cs1MFOrdHi7hwE7xsYqIh8.png" alt="Дельстейн">
                         <div class="image-caption" id="caption1">✦ Дельстейн — суровый край, где родился Траин ✦</div>
                     </div>
                     <div class="section-text fade-item" id="ch1Text1">Траин родился в Дельстейне, в семье кузнеца Ульда Углича. Мать умерла при родах, отец растил его сурово, брат Балин — жестоко. Траин был тихим и слишком много думал. Это бесило брата. В детстве отец отправил Траина в часовню при старом храме — маленькую каменную церковь на окраине Карнхольма, где молились бедняки. Старая жрица, которую все звали просто Мать, учила детей читать, писать и молиться. Она никогда не называла имя своего бога. Траин пробыл там около года, полюбил тишину храма, но отец забрал его: «мальчику нужно учиться держать молот».</div>
                     <div class="section-text fade-item" id="ch1Text2">В двенадцать лет отец показал Траину нижнюю кузницу — тайную комнату с древними артефактами. Там лежал чёрный камень с руной в виде раздвоенной молнии. Руна была тёплой, шептала, светилась холодным синим. Траин тайком прикасался к ней. С того дня руна словно осталась с ним. Не на камне — внутри. Под кожей. В крови. Он чувствовал её, даже когда был далеко от подвала. Балин узнал, ударил Траина, назвал колдуном и слабаком. С тех пор братья стали чужими.</div>
-                    <div class="chapter-image-right fade-item hover-zoom">
+                    <div class="chapter-image-right fade-item image-gallery">
                         <img src="34544f6aa5c1a8bedbe2ea13ac9a4375.jpg" alt="Тайная кузница">
                         <div class="image-caption" id="caption2">✦ Тайная кузница отца — чёрный камень с древней руной ✦</div>
                     </div>
@@ -446,12 +498,12 @@
                 <!-- ГЛАВА 2 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-shield-alt"></i><span id="ch2Title">Глава вторая: Двадцать лет в ордене</span></div>
-                    <div class="chapter-image-right fade-item hover-zoom">
+                    <div class="chapter-image-right fade-item image-gallery">
                         <img src="00aa4ab0912341fcb9f31386c7531fe1.jpg" alt="Воинский орден">
                         <div class="image-caption" id="caption3">✦ Воинский орден Дельстейна — старый, дисциплинированный ✦</div>
                     </div>
                     <div class="section-text fade-item" id="ch2Text1">Траин не стал скитаться один. Он вступил в один из воинских орденов Дельстейна. Название того ордена он почти забыл — слишком много воды утекло, слишком много крови. Помнит только, что орден был старым, дисциплинированным и не задавал лишних вопросов. Этот орден славился своей суровой школой: железная дисциплина, недельные переходы по снегам, боевые гимны, что пели у костров перед битвой.</div>
-                    <div class="chapter-image-left-lower fade-item hover-zoom">
+                    <div class="chapter-image-left-lower fade-item image-gallery">
                         <img src="36309ded6b1198eb6fdcf8b3b38f3c63.jpg" alt="Воин ордена">
                         <div class="image-caption" id="caption4">✦ Один из воинов ордена — сталь и суровость ✦</div>
                     </div>
@@ -482,7 +534,7 @@
                 <!-- НОВАЯ ГЛАВА 6 -->
                 <div class="history-chapter">
                     <div class="history-title"><i class="fas fa-fist-raised"></i><span id="ch6Title">Глава шестая: Последний рубеж</span></div>
-                    <div class="chapter-image-right fade-item hover-zoom">
+                    <div class="chapter-image-right fade-item image-gallery">
                         <img src="placeholder_ch6.jpg" alt="Битва за Соларнтир">
                         <div class="image-caption" id="caption6">✦ Битва за Соларнтир — последняя надежда ✦</div>
                     </div>
@@ -518,6 +570,7 @@
     </div>
 </div>
 
+<!-- Модальное окно товарищей -->
 <div id="comradesModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -526,6 +579,12 @@
         </div>
         <div class="comrade-list" id="comradeList"></div>
     </div>
+</div>
+
+<!-- Fullscreen модалка для картинок -->
+<div id="fullscreenModal" class="fullscreen-modal">
+    <button class="fullscreen-close" id="fullscreenCloseBtn">&times;</button>
+    <img id="fullscreenImage" src="" alt="Полноэкранный режим">
 </div>
 
 <script>
@@ -561,6 +620,38 @@
         if (name.includes('Биатрис') || name.includes('Beatrice')) return 'fa-hourglass-half';
         if (name.includes('Клэр') || name.includes('Claire')) return 'fa-feather-alt';
         return 'fa-paw';
+    }
+
+    // Fullscreen функционал для картинок
+    function initFullscreen() {
+        const images = document.querySelectorAll('.chapter-image-left img, .chapter-image-right img, .chapter-image-left-lower img');
+        const modal = document.getElementById('fullscreenModal');
+        const modalImg = document.getElementById('fullscreenImage');
+        const closeBtn = document.getElementById('fullscreenCloseBtn');
+        
+        images.forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                modalImg.src = this.src;
+                modal.classList.add('active');
+            });
+        });
+        
+        function closeFullscreen() {
+            modal.classList.remove('active');
+            modalImg.src = '';
+        }
+        
+        closeBtn.addEventListener('click', closeFullscreen);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeFullscreen();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeFullscreen();
+            }
+        });
     }
 
     function updateLanguage(lang) {
@@ -637,7 +728,7 @@
             document.getElementById('goal4').innerHTML = '<strong>Не умереть никем</strong> — оставить след, пусть даже в виде выжженной руны на камне, чтобы кто-то вспомнил: Траин Углич существовал не только для приказов.';
             document.getElementById('finalQuote').innerHTML = '«Больше всего я боюсь однажды проснуться и понять, что стал тем, кого презирал — слепым исполнителем без чести и памяти. Руна внутри — это не дар и не проклятие. Это экзамен. И я ещё не знаю, сдам ли его».';
         } else {
-            // ENGLISH VERSION (сокращённо для компактности, можно расширить)
+            // ENGLISH VERSION
             document.getElementById('mainSub').innerText = 'Rune Knight · former Order warrior · soldier without faith';
             document.getElementById('badge1').innerText = 'Living Rune · Forked Lightning';
             document.getElementById('badge2').innerText = '47 winters · Delstein';
@@ -688,6 +779,7 @@
         }
     }
 
+    // Модальное окно товарищей
     const modalEl = document.getElementById('comradesModal');
     const openBtn = document.getElementById('comradesBtn');
     const closeBtn = document.getElementById('closeModalBtn');
@@ -697,11 +789,13 @@
     closeBtn.addEventListener('click', closeModal);
     modalEl.addEventListener('click', function(e) { if (e.target === modalEl) closeModal(); });
 
+    // Переключение языка
     const langBtn = document.getElementById('langBtn');
     langBtn.addEventListener('click', () => {
         updateLanguage(currentLang === 'ru' ? 'en' : 'ru');
     });
 
+    // Анимация руны
     const runeSymbol = document.querySelector('.rune-symbol i');
     if (runeSymbol) {
         setInterval(() => {
@@ -710,6 +804,10 @@
         }, 3000);
     }
 
+    // Инициализация полноэкранного режима
+    initFullscreen();
+    
+    // Запуск с русским языком
     updateLanguage('ru');
 </script>
 </body>
