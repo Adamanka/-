@@ -8,25 +8,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Параллакс фоны */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            z-index: -2;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        /* ФОН 1 (для глав 1-5) */
+        .parallax-bg-1 {
+            background-image: url('fd4d90627bd18313378cedc492b0d682.jpg');
+            opacity: 1;
+        }
+        
+        /* ФОН 2 (для главы 6) — ПОКА ЗАГЛУШКА, ПОТОМ ЗАМЕНИШЬ */
+        .parallax-bg-2 {
+            background-image: url('background2.jpg');
+            opacity: 0;
+        }
+        
         body {
-            background: #e8e0d5;
-            background-image: radial-gradient(circle at 20% 30%, rgba(180, 150, 120, 0.08) 2%, transparent 2.5%);
-            background-size: 32px 32px;
             font-family: 'Inter', sans-serif;
             color: #2c241e;
             line-height: 1.55;
             padding: 2rem 1.5rem;
+            position: relative;
+            background: transparent;
         }
+        
+        /* Полупрозрачный оверлей для читаемости текста */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(232, 224, 213, 0.75);
+            backdrop-filter: blur(1px);
+            z-index: -1;
+        }
+        
         .container { max-width: 1000px; margin: 0 auto; }
         .dossier {
-            background: #fffcf7;
+            background: rgba(255, 252, 247, 0.92);
             border-radius: 24px;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.02);
             overflow: hidden;
             border: 1px solid #e2d5c8;
+            backdrop-filter: blur(2px);
         }
         .header {
-            background: #f5efe8;
+            background: rgba(245, 239, 232, 0.9);
             padding: 1.8rem 2rem 1.2rem 2rem;
             border-bottom: 2px solid #cbbfae;
             position: relative;
@@ -442,6 +484,10 @@
     </style>
 </head>
 <body>
+<!-- Параллакс фоны -->
+<div class="parallax-bg parallax-bg-1"></div>
+<div class="parallax-bg parallax-bg-2"></div>
+
 <div class="container">
     <div class="dossier">
         <div class="header">
@@ -476,7 +522,7 @@
                 <div class="section-title"><i class="fas fa-book-open"></i><span id="historyTitle">История Траина Углича</span></div>
                 
                 <!-- ГЛАВА 1 -->
-                <div class="history-chapter">
+                <div class="history-chapter" data-chapter="1">
                     <div class="history-title"><i class="fas fa-hammer"></i><span id="ch1Title">Глава первая: Детство и проклятая руна</span></div>
                     <div class="chapter-image-left fade-item image-gallery">
                         <img src="AClOY7r3HLLx_aoETd1Z7nleTOPT_wbhRVK-f7hi3cOkZUb_fxb-kl7Se-wHX6UwdUBr1cvuwSL2vG8V_K9wSRpPMA1wGXWC8WkAH_Q0i54FkmPQcWT-1Sxf_OmzDnpWDeW92YFc8qBb6BGzbSTSI8614wDTMF4VU28edefsmH2o51cs1MFOrdHi7hwE7xsYqIh8.png" alt="Дельстейн">
@@ -493,7 +539,7 @@
                 </div>
                 
                 <!-- ГЛАВА 2 -->
-                <div class="history-chapter">
+                <div class="history-chapter" data-chapter="2">
                     <div class="history-title"><i class="fas fa-shield-alt"></i><span id="ch2Title">Глава вторая: Двадцать лет в ордене</span></div>
                     <div class="chapter-image-right fade-item image-gallery">
                         <img src="00aa4ab0912341fcb9f31386c7531fe1.jpg" alt="Воинский орден">
@@ -509,27 +555,27 @@
                 </div>
                 
                 <!-- ГЛАВА 3 -->
-                <div class="history-chapter">
+                <div class="history-chapter" data-chapter="3">
                     <div class="history-title"><i class="fas fa-dungeon"></i><span id="ch3Title">Глава третья: Таррах Мор · Глас пустоши</span></div>
                     <div class="section-text fade-item" id="ch3Text1">После ухода из ордена Траин прибился к торговому каравану, который шёл через Таррах Мор в Соларнтир. Ему было уже под сорок. На четвёртую ночь караван уничтожили тени из пустоши. Траин остался единственным живым. Он лежал среди трупов и умирал. И тогда он услышал голос. Не ушами — где-то внутри. Голос сказал: <strong>«Встань. Ещё не время»</strong>. Он встал. Рана затянулась. Руна внутри проснулась по-настоящему.</div>
                     <div class="section-text fade-item" id="ch3Text2">Он шёл три дня без еды и воды. Вышел к воротам Соларнтира, рухнул у стены. Ему было сорок два. Стража бросила ему хлеб, как собаке. Он попал в Соларнтир и просто остался там.</div>
                 </div>
                 
                 <!-- ГЛАВА 4 -->
-                <div class="history-chapter">
+                <div class="history-chapter" data-chapter="4">
                     <div class="history-title"><i class="fas fa-city"></i><span id="ch4Title">Глава четвёртая: Пёс Соларнтира</span></div>
                     <div class="section-text fade-item" id="ch4Text1">Он попытался работать — его никуда не брали. Он украл хлеб. Судья дал выбор: тюрьма с «очищением болью» или служба. Траин выбрал службу. Пять лет он уже носит нашивку Соларнтира, выполняет приказы и ненавидит этот город. Ему сорок семь. Руна внутри живёт своей жизнью. Иногда молчит неделями. Иногда пульсирует так, что кости растут. Он слишком стар, чтобы бояться. И слишком устал, чтобы искать ответы.</div>
                 </div>
                 
                 <!-- ГЛАВА 5 -->
-                <div class="history-chapter">
+                <div class="history-chapter" data-chapter="5">
                     <div class="history-title"><i class="fas fa-landmark"></i><span id="ch5Title">Глава пятая: Тень ордена «Последний Глас»</span></div>
                     <div class="section-text fade-item" id="ch5Text1">В дорожных пыльных архивах Соларнтира он наткнулся на старое досье об Ордене <strong>«Последний Глас Берсерка»</strong>. Тридцать тысяч мечей, сражавшихся против Падижего Магнуса. Их бог — Алый Аргентум. Символ — капля крови в ореоле огня. Траина зацепило название. «Последний Глас». Как тот голос, сказавший «Встань».</div>
                     <div class="quote-mini fade-item"><i class="fas fa-dice-d20"></i> <span id="quote1">«Я не знаю, звал ли меня тот голос. Но если есть хоть искра связи — я докопаюсь до правды».</span></div>
                 </div>
 
-                <!-- ГЛАВА 6 с ИСПРАВЛЕННЫМ НАЗВАНИЕМ ФАЙЛА -->
-                <div class="history-chapter">
+                <!-- ГЛАВА 6 -->
+                <div class="history-chapter" data-chapter="6">
                     <div class="history-title"><i class="fas fa-fist-raised"></i><span id="ch6Title">Глава шестая: Последний рубеж</span></div>
                     <div class="chapter-image-right fade-item image-gallery">
                         <img src="b366b1f8cb17821262bf687e121859ce.jpg" alt="Битва за Соларнитар">
@@ -583,6 +629,7 @@
 </div>
 
 <script>
+    // Данные товарищей
     const comradesData = {
         ru: [
             { name: "Балсмег Скальный", class: "Варвар (Берсерк) · Полуорк", thought: "«Гроза полей и врагов. Когда Балсмег идёт в атаку — земля дрожит. Я бы не хотел оказаться на его пути. Надёжен, как гранитная скала.»" },
@@ -614,6 +661,30 @@
         if (name.includes('Биатрис') || name.includes('Beatrice')) return 'fa-hourglass-half';
         if (name.includes('Клэр') || name.includes('Claire')) return 'fa-feather-alt';
         return 'fa-paw';
+    }
+
+    // Функция для смены фона при прокрутке
+    function updateBackgroundOnScroll() {
+        const chapter6 = document.querySelector('.history-chapter[data-chapter="6"]');
+        if (!chapter6) return;
+        
+        const rect = chapter6.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Когда верх 6 главы достигает середины экрана, начинаем менять фон
+        let opacity = 0;
+        if (rect.top <= windowHeight * 0.6) {
+            // Чем выше поднимается 6 глава, тем больше opacity для второго фона
+            opacity = Math.min(1, Math.max(0, (windowHeight * 0.6 - rect.top) / (windowHeight * 0.3)));
+        }
+        
+        const bg1 = document.querySelector('.parallax-bg-1');
+        const bg2 = document.querySelector('.parallax-bg-2');
+        
+        if (bg1 && bg2) {
+            bg1.style.opacity = 1 - opacity;
+            bg2.style.opacity = opacity;
+        }
     }
 
     function initFullscreen() {
@@ -794,8 +865,13 @@
         }, 3000);
     }
 
+    // Слушатель события прокрутки для смены фона
+    window.addEventListener('scroll', updateBackgroundOnScroll);
+    window.addEventListener('resize', updateBackgroundOnScroll);
+    
     initFullscreen();
     updateLanguage('ru');
+    updateBackgroundOnScroll();
 </script>
 </body>
 </html>
