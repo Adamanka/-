@@ -9,7 +9,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Параллакс фоны */
+        /* ========== ПАРАЛЛАКС ФОНЫ ========== */
         .parallax-bg {
             position: fixed;
             top: 0;
@@ -28,24 +28,26 @@
         .parallax-bg-1 {
             background-image: url('fd4d90627bd18313378cedc492b0d682.jpg');
             opacity: 1;
+            filter: contrast(1.05) brightness(1.02);
         }
         
-        /* ФОН 2 (для главы 6) — ПОКА ЗАГЛУШКА, ПОТОМ ЗАМЕНИШЬ */
+        /* ФОН 2 (для главы 6) */
         .parallax-bg-2 {
             background-image: url('background2.jpg');
             opacity: 0;
+            filter: contrast(1.05) brightness(1.02);
         }
         
         body {
+            background: transparent;
             font-family: 'Inter', sans-serif;
             color: #2c241e;
             line-height: 1.55;
             padding: 2rem 1.5rem;
             position: relative;
-            background: transparent;
         }
         
-        /* Полупрозрачный оверлей для читаемости текста */
+        /* Полупрозрачный оверлей */
         body::before {
             content: '';
             position: fixed;
@@ -53,26 +55,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(232, 224, 213, 0.75);
-            backdrop-filter: blur(1px);
+            background: rgba(232, 224, 213, 0.55);
             z-index: -1;
         }
         
         .container { max-width: 1000px; margin: 0 auto; }
+        
         .dossier {
-            background: rgba(255, 252, 247, 0.92);
+            background: rgba(255, 252, 247, 0.85);
             border-radius: 24px;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.02);
             overflow: hidden;
             border: 1px solid #e2d5c8;
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(0px);
         }
+        
         .header {
-            background: rgba(245, 239, 232, 0.9);
+            background: rgba(245, 239, 232, 0.85);
             padding: 1.8rem 2rem 1.2rem 2rem;
             border-bottom: 2px solid #cbbfae;
             position: relative;
         }
+        
         .rune-line {
             display: flex;
             align-items: center;
@@ -83,6 +87,7 @@
             font-family: monospace;
             margin-bottom: 0.75rem;
         }
+        
         h1 {
             font-family: 'Cormorant Garamont', serif;
             font-size: 2.8rem;
@@ -90,6 +95,7 @@
             color: #3a2c22;
             letter-spacing: -0.5px;
         }
+        
         .sub {
             color: #7d6652;
             font-size: 0.85rem;
@@ -97,6 +103,7 @@
             padding-left: 1rem;
             margin-top: 0.4rem;
         }
+        
         .header-buttons {
             position: absolute;
             top: 1.8rem;
@@ -104,6 +111,7 @@
             display: flex;
             gap: 0.8rem;
         }
+        
         .lang-btn, .comrades-btn {
             background: #2a221c;
             border: 1px solid #bc9a72;
@@ -120,8 +128,10 @@
             font-family: 'Inter', sans-serif;
             z-index: 10;
         }
+        
         .lang-btn:hover, .comrades-btn:hover { background: #bc9a72; color: #1f1915; transform: scale(1.02); }
         
+        /* Модальное окно */
         .modal {
             display: none;
             position: fixed;
@@ -135,7 +145,9 @@
             justify-content: center;
             align-items: center;
         }
+        
         .modal.active { display: flex; }
+        
         .modal-content {
             background: #fffcf7;
             border-radius: 24px;
@@ -147,10 +159,12 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             animation: modalFadeIn 0.3s ease;
         }
+        
         @keyframes modalFadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
         .modal-header {
             background: #f5efe8;
             padding: 1rem 1.5rem;
@@ -159,11 +173,13 @@
             justify-content: space-between;
             align-items: center;
         }
+        
         .modal-header h3 {
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.5rem;
             color: #3a2c22;
         }
+        
         .modal-close {
             background: none;
             border: none;
@@ -172,15 +188,20 @@
             color: #9b7b5e;
             transition: 0.2s;
         }
+        
         .modal-close:hover { color: #bc5a38; }
+        
         .comrade-list { padding: 1rem 1.5rem; }
+        
         .comrade-card {
             display: flex;
             gap: 1rem;
             padding: 1rem 0;
             border-bottom: 1px solid #e9dfd3;
         }
+        
         .comrade-card:last-child { border-bottom: none; }
+        
         .comrade-icon {
             width: 50px;
             height: 50px;
@@ -192,9 +213,13 @@
             border: 1px solid #dacbbc;
             flex-shrink: 0;
         }
+        
         .comrade-icon i { font-size: 1.5rem; color: #aa8260; }
+        
         .comrade-info { flex: 1; }
+        
         .comrade-name { font-weight: 700; font-size: 1.1rem; color: #3a2c22; }
+        
         .comrade-class {
             font-size: 0.7rem;
             color: #9b826b;
@@ -202,17 +227,21 @@
             letter-spacing: 1px;
             margin-bottom: 0.3rem;
         }
+        
         .comrade-thought {
             font-size: 0.85rem;
             color: #5c4a3b;
             font-style: italic;
         }
+        
         .comrade-thought i { color: #bc9a72; margin-right: 4px; }
         
+        /* Галерея */
         .image-gallery {
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        
         .image-gallery:hover {
             filter: brightness(1.05) contrast(1.05);
             box-shadow: 0 0 15px rgba(188, 106, 56, 0.5), 0 0 30px rgba(188, 106, 56, 0.3);
@@ -232,9 +261,9 @@
             align-items: center;
             cursor: pointer;
         }
-        .fullscreen-modal.active {
-            display: flex;
-        }
+        
+        .fullscreen-modal.active { display: flex; }
+        
         .fullscreen-modal img {
             max-width: 90vw;
             max-height: 90vh;
@@ -242,6 +271,7 @@
             border-radius: 12px;
             box-shadow: 0 0 40px rgba(0,0,0,0.5);
         }
+        
         .fullscreen-close {
             position: absolute;
             top: 20px;
@@ -255,11 +285,13 @@
             font-weight: bold;
             transition: 0.2s;
         }
+        
         .fullscreen-close:hover {
             color: #bc9a72;
             transform: scale(1.1);
         }
         
+        /* Инфо-панель */
         .info-panel {
             display: flex;
             flex-wrap: wrap;
@@ -267,6 +299,7 @@
             padding: 2rem 2rem 0.8rem 2rem;
             border-bottom: 1px solid #e9dfd3;
         }
+        
         .avatar {
             flex: 1;
             min-width: 180px;
@@ -275,6 +308,7 @@
             align-items: center;
             gap: 0.8rem;
         }
+        
         .rune-symbol {
             width: 130px;
             height: 130px;
@@ -286,7 +320,9 @@
             border: 1px solid #dacbbc;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
+        
         .rune-symbol i { font-size: 3.8rem; color: #aa8260; transition: text-shadow 0.2s; }
+        
         .badge {
             background: #f3ede6;
             padding: 0.3rem 1rem;
@@ -295,16 +331,19 @@
             color: #6e5440;
             border: 1px solid #dfd0c0;
         }
+        
         .traits {
             flex: 2.5;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 0.8rem 1.5rem;
         }
+        
         .trait-item {
             border-bottom: 1px solid #e5d9ce;
             padding-bottom: 0.4rem;
         }
+        
         .trait-label {
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -312,14 +351,18 @@
             color: #9b826b;
             font-weight: 500;
         }
+        
         .trait-value {
             font-size: 0.95rem;
             font-weight: 500;
             color: #3e3026;
             margin-top: 0.2rem;
         }
+        
         .content { padding: 1.2rem 2rem 2rem 2rem; }
+        
         .section { margin-bottom: 2.2rem; }
+        
         .section-title {
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.7rem;
@@ -332,12 +375,15 @@
             padding-bottom: 0.3rem;
             margin-bottom: 1rem;
         }
+        
         .section-title i { font-size: 1.4rem; color: #bc9a72; }
+        
         .section-text {
             color: #3d3229;
             text-align: justify;
             margin-bottom: 0.75rem;
         }
+        
         .quote-mini {
             background: #faf5ef;
             padding: 0.8rem 1.2rem;
@@ -347,23 +393,28 @@
             font-size: 0.9rem;
             color: #5c4a3b;
         }
+        
         .pillar-list {
             list-style: none;
             margin-top: 0.5rem;
         }
+        
         .pillar-list li {
             margin-bottom: 0.7rem;
             display: flex;
             align-items: baseline;
             gap: 10px;
         }
+        
         .pillar-list li i {
             color: #aa8260;
             width: 24px;
             font-size: 1rem;
             margin-top: 3px;
         }
+        
         .history-chapter { margin-bottom: 1.5rem; }
+        
         .history-title {
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.3rem;
@@ -374,7 +425,10 @@
             align-items: center;
             gap: 8px;
         }
+        
         .history-title i { font-size: 1.1rem; color: #bc9a72; }
+        
+        /* Картинки в главах */
         .chapter-image-left {
             float: left;
             width: 200px;
@@ -386,6 +440,7 @@
             border: 1px solid #e2d5c8;
             transition: all 0.3s ease;
         }
+        
         .chapter-image-right {
             float: right;
             width: 280px;
@@ -397,6 +452,7 @@
             border: 1px solid #e2d5c8;
             transition: all 0.3s ease;
         }
+        
         .chapter-image-left-lower {
             float: left;
             width: 200px;
@@ -408,12 +464,14 @@
             border: 1px solid #e2d5c8;
             transition: all 0.3s ease;
         }
+        
         .chapter-image-left img, .chapter-image-right img, .chapter-image-left-lower img {
             width: 100%;
             height: auto;
             display: block;
             cursor: pointer;
         }
+        
         .image-caption {
             font-size: 0.65rem;
             color: #9b826b;
@@ -424,13 +482,16 @@
             font-style: italic;
             cursor: pointer;
         }
+        
         .clear-float { clear: both; }
+        
         hr {
             border: none;
             height: 1px;
             background: linear-gradient(to right, #e0cfbf, transparent);
             margin: 1rem 0;
         }
+        
         .footer-note {
             text-align: center;
             font-size: 0.7rem;
@@ -439,27 +500,33 @@
             padding: 1.2rem;
             background: #fefbf8;
         }
+        
         .fade-item {
             opacity: 0;
             transform: translateY(12px);
             animation: fadeInUp 0.6s ease forwards;
         }
+        
         .fade-item:nth-child(1) { animation-delay: 0.05s; }
         .fade-item:nth-child(2) { animation-delay: 0.10s; }
         .fade-item:nth-child(3) { animation-delay: 0.15s; }
         .fade-item:nth-child(4) { animation-delay: 0.20s; }
         .fade-item:nth-child(5) { animation-delay: 0.25s; }
+        
         @keyframes fadeInUp {
             0% { opacity: 0; transform: translateY(12px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+        
         .section-title, .history-title {
             opacity: 0;
             transform: translateY(10px);
             animation: fadeInUp 0.5s ease forwards;
         }
+        
         .section-title { animation-delay: 0s; }
         .history-title { animation-delay: 0.02s; }
+        
         @media (max-width: 600px) {
             .chapter-image-left, .chapter-image-right, .chapter-image-left-lower {
                 float: none;
@@ -474,6 +541,7 @@
             }
             .header { display: flex; flex-direction: column; gap: 0.5rem; }
         }
+        
         @media (max-width: 700px) {
             body { padding: 1rem; }
             h1 { font-size: 2rem; }
@@ -629,7 +697,6 @@
 </div>
 
 <script>
-    // Данные товарищей
     const comradesData = {
         ru: [
             { name: "Балсмег Скальный", class: "Варвар (Берсерк) · Полуорк", thought: "«Гроза полей и врагов. Когда Балсмег идёт в атаку — земля дрожит. Я бы не хотел оказаться на его пути. Надёжен, как гранитная скала.»" },
@@ -663,7 +730,6 @@
         return 'fa-paw';
     }
 
-    // Функция для смены фона при прокрутке
     function updateBackgroundOnScroll() {
         const chapter6 = document.querySelector('.history-chapter[data-chapter="6"]');
         if (!chapter6) return;
@@ -671,10 +737,8 @@
         const rect = chapter6.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        // Когда верх 6 главы достигает середины экрана, начинаем менять фон
         let opacity = 0;
         if (rect.top <= windowHeight * 0.6) {
-            // Чем выше поднимается 6 глава, тем больше opacity для второго фона
             opacity = Math.min(1, Math.max(0, (windowHeight * 0.6 - rect.top) / (windowHeight * 0.3)));
         }
         
@@ -792,7 +856,7 @@
             document.getElementById('goal4').innerHTML = '<strong>Не умереть никем</strong> — оставить след, пусть даже в виде выжженной руны на камне, чтобы кто-то вспомнил: Траин Углич существовал не только для приказов.';
             document.getElementById('finalQuote').innerHTML = '«Больше всего я боюсь однажды проснуться и понять, что стал тем, кого презирал — слепым исполнителем без чести и памяти. Руна внутри — это не дар и не проклятие. Это экзамен. И я ещё не знаю, сдам ли его».';
         } else {
-            // ENGLISH VERSION
+            // ENGLISH VERSION (сокращённо для компактности)
             document.getElementById('mainSub').innerText = 'Rune Knight · former Order warrior · soldier without faith';
             document.getElementById('badge1').innerText = 'Living Rune · Forked Lightning';
             document.getElementById('badge2').innerText = '47 winters · Delstein';
@@ -865,7 +929,6 @@
         }, 3000);
     }
 
-    // Слушатель события прокрутки для смены фона
     window.addEventListener('scroll', updateBackgroundOnScroll);
     window.addEventListener('resize', updateBackgroundOnScroll);
     
