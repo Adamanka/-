@@ -126,5 +126,190 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    radioAudio.addEventListener
+    radioAudio.addEventListener('loadedmetadata', () => {
+        if (durationSpan) durationSpan.textContent = formatRadioTime(radioAudio.duration);
+    });
     
+    radioAudio.addEventListener('ended', () => nextRadioTrack());
+    
+    if (progressBar) {
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            if (radioAudio.duration) radioAudio.currentTime = percent * radioAudio.duration;
+        });
+    }
+    
+    // Сворачивание радио
+    const radio = document.getElementById('dndRadio');
+    const radioToggle = document.getElementById('radioToggle');
+    const radioHeader = document.getElementById('radioHeader');
+    let isCollapsed = false;
+    
+    if (radioToggle) {
+        radioToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isCollapsed = !isCollapsed;
+            if (radio) {
+                if (isCollapsed) {
+                    radio.classList.add('collapsed');
+                    radioToggle.textContent = '+';
+                } else {
+                    radio.classList.remove('collapsed');
+                    radioToggle.textContent = '−';
+                }
+            }
+        });
+    }
+    
+    if (radioHeader) {
+        radioHeader.addEventListener('click', (e) => {
+            if (e.target !== radioToggle) {
+                isCollapsed = !isCollapsed;
+                if (radio) {
+                    if (isCollapsed) {
+                        radio.classList.add('collapsed');
+                        if (radioToggle) radioToggle.textContent = '+';
+                    } else {
+                        radio.classList.remove('collapsed');
+                        if (radioToggle) radioToggle.textContent = '−';
+                    }
+                }
+            }
+        });
+    }
+    
+    if (playlist.length > 0) {
+        loadRadioTrack(0);
+        radioAudio.volume = 0.4;
+        if (volumeSlider) volumeSlider.value = 0.4;
+    }
+});
+
+function updateBackgroundOnScroll() {
+    const chapter6 = document.querySelector('.history-chapter[data-chapter="6"]');
+    if (!chapter6) return;
+    const rect = chapter6.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    let opacity = 0;
+    if (rect.top <= windowHeight * 0.6) {
+        opacity = Math.min(1, Math.max(0, (windowHeight * 0.6 - rect.top) / (windowHeight * 0.3)));
+    }
+    const bg1 = document.querySelector('.parallax-bg-1');
+    const bg2 = document.querySelector('.parallax-bg-2');
+    if (bg1 && bg2) {
+        bg1.style.opacity = 1 - opacity;
+        bg2.style.opacity = opacity;
+    }
+}
+
+function initFullscreen() {
+    const images = document.querySelectorAll('.chapter-image-left img, .chapter-image-right img, .chapter-image-left-lower img');
+    const modal = document.getElementById('fullscreenModal');
+    const modalImg = document.getElementById('fullscreenImage');
+    const closeBtn = document.getElementById('fullscreenCloseBtn');
+    
+    images.forEach(img => {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (modalImg) modalImg.src = this.src;
+            if (modal) modal.classList.add('active');
+        });
+    });
+    
+    function closeFullscreen() {
+        if (modal) modal.classList.remove('active');
+        if (modalImg) modalImg.src = '';
+    }
+    
+    if (closeBtn) closeBtn.addEventListener('click', closeFullscreen);
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeFullscreen();
+        });
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            closeFullscreen();
+        }
+    });
+}
+
+function updateLanguage(lang) {
+    currentLang = lang;
+    const data = comradesData[lang];
+    const btn = document.getElementById('langBtn');
+    if (btn) btn.innerHTML = lang === 'ru' ? '<i class="fas fa-globe"></i> English' : '<i class="fas fa-globe"></i> Русский';
+    
+    const comradesBtnText = document.getElementById('comradesBtnText');
+    if (comradesBtnText) comradesBtnText.innerText = lang === 'ru' ? 'Товарищи' : 'Comrades';
+    
+    const modalTitle = document.getElementById('modalTitle');
+    if (modalTitle) modalTitle.innerText = lang === 'ru' ? 'Товарищи' : 'Comrades';
+    
+    const comradeList = document.getElementById('comradeList');
+    if (comradeList) {
+        comradeList.innerHTML = '';
+        data.forEach(c => {
+            const card = document.createElement('div');
+            card.className = 'comrade-card';
+            card.innerHTML = `<div class="comrade-icon"><i class="fas ${getIconForClass(c.name)}"></i></div><div class="comrade-info"><div class="comrade-name">${c.name}</div><div class="comrade-class">${c.class}</div><div class="comrade-thought"><i class="fas fa-quote-left"></i> ${c.thought}</div></div>`;
+            comradeList.appendChild(card);
+        });
+    }
+    
+    // Обновление текстов (короткая версия для примера)
+    const mainSub = document.getElementById('mainSub');
+    if (mainSub) mainSub.innerText = lang === 'ru' ? 'Рунный рыцарь · бывший воин ордена · солдат без веры' : 'Rune Knight · former Order warrior · soldier without faith';
+    
+    const historyTitle = document.getElementById('historyTitle');
+    if (historyTitle) historyTitle.innerText = lang === 'ru' ? 'История Траина Углича' : 'The Story of Train Uglich';
+    
+    const fearTitle = document.getElementById('fearTitle');
+    if (fearTitle) fearTitle.innerText = lang === 'ru' ? 'Страх, что гложет изнутри' : 'The Fear that Gnaws Within';
+    
+    const goalsTitle = document.getElementById('goalsTitle');
+    if (goalsTitle) goalsTitle.innerText = lang === 'ru' ? 'Цели, что ведут вперёд' : 'Goals that Lead Forward';
+    
+    const footerText = document.getElementById('footerText');
+    if (footerText) footerText.innerText = lang === 'ru' ? 'Квента персонажа · архив вольного клинка · Дельстейн — Соларнтир' : 'Character Quest · free blade archive · Delstein — Solarntir';
+}
+
+// Инициализация после загрузки DOM
+document.addEventListener('DOMContentLoaded', () => {
+    initFullscreen();
+    updateLanguage('ru');
+    updateBackgroundOnScroll();
+    
+    window.addEventListener('scroll', updateBackgroundOnScroll);
+    window.addEventListener('resize', updateBackgroundOnScroll);
+    
+    const langBtn = document.getElementById('langBtn');
+    if (langBtn) {
+        langBtn.addEventListener('click', () => {
+            updateLanguage(currentLang === 'ru' ? 'en' : 'ru');
+        });
+    }
+    
+    const comradesBtn = document.getElementById('comradesBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalEl = document.getElementById('comradesModal');
+    
+    if (comradesBtn && modalEl) {
+        comradesBtn.addEventListener('click', () => modalEl.classList.add('active'));
+    }
+    if (closeModalBtn && modalEl) {
+        closeModalBtn.addEventListener('click', () => modalEl.classList.remove('active'));
+    }
+    if (modalEl) {
+        modalEl.addEventListener('click', (e) => { if (e.target === modalEl) modalEl.classList.remove('active'); });
+    }
+    
+    const runeSymbol = document.querySelector('.rune-symbol i');
+    if (runeSymbol) {
+        setInterval(() => {
+            runeSymbol.style.textShadow = '0 0 8px #d47f58';
+            setTimeout(() => { runeSymbol.style.textShadow = 'none'; }, 200);
+        }, 3000);
+    }
+});
