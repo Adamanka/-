@@ -7,7 +7,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --bg: #e8e0d5;
+            --bg-card: #fffcf7;
+            --bg-header: #f5efe8;
+            --text: #2c241e;
+            --text-muted: #7d6652;
+            --border: #cbbfae;
+            --accent: #bc9a72;
+            --accent-hover: #a8845c;
+            --overlay: rgba(232, 224, 213, 0.75);
+            --shadow: rgba(0,0,0,0.08);
+            --rune: #aa8260;
+            --rune-glow: #d47f58;
+        }
+
+        /* ТЕМЫ */
+        [data-theme="1"] { --bg: #e8e0d5; --bg-card: #fffcf7; --bg-header: #f5efe8; --text: #2c241e; --text-muted: #7d6652; --border: #cbbfae; --accent: #bc9a72; --accent-hover: #a8845c; --overlay: rgba(232,224,213,0.75); --shadow: rgba(0,0,0,0.08); --rune: #aa8260; --rune-glow: #d47f58; }
+        [data-theme="2"] { --bg: #1a1a2e; --bg-card: #16213e; --bg-header: #0f3460; --text: #e8e0d5; --text-muted: #a8a0b0; --border: #4a6a8a; --accent: #7a9ac0; --accent-hover: #5a7aa0; --overlay: rgba(26,26,46,0.8); --shadow: rgba(0,0,0,0.3); --rune: #8ab0d0; --rune-glow: #6a9ac0; }
+        [data-theme="3"] { --bg: #1a0f0a; --bg-card: #2a1a10; --bg-header: #3a2215; --text: #e8d5c0; --text-muted: #b09a80; --border: #7a5a3a; --accent: #c9a87b; --accent-hover: #a8885b; --overlay: rgba(26,15,10,0.8); --shadow: rgba(0,0,0,0.3); --rune: #d4a373; --rune-glow: #e8c49a; }
+        [data-theme="4"] { --bg: #0d1a0d; --bg-card: #1a2a1a; --bg-header: #2a3a25; --text: #d5e0c5; --text-muted: #8aa07a; --border: #4a6a3a; --accent: #7aaa5a; --accent-hover: #5a8a3a; --overlay: rgba(13,26,13,0.8); --shadow: rgba(0,0,0,0.3); --rune: #8ac06a; --rune-glow: #6aaa4a; }
+        [data-theme="5"] { --bg: #1a0a1a; --bg-card: #2a152a; --bg-header: #3a1a35; --text: #e0c5d5; --text-muted: #a08090; --border: #7a4a6a; --accent: #c07aaa; --accent-hover: #a05a8a; --overlay: rgba(26,10,26,0.8); --shadow: rgba(0,0,0,0.3); --rune: #d08ab0; --rune-glow: #c06a9a; }
+        [data-theme="6"] { --bg: #0a0a0a; --bg-card: #1a1a1a; --bg-header: #2a2a2a; --text: #d0d0d0; --text-muted: #909090; --border: #5a5a5a; --accent: #8a8a8a; --accent-hover: #6a6a6a; --overlay: rgba(10,10,10,0.85); --shadow: rgba(0,0,0,0.5); --rune: #a0a0a0; --rune-glow: #c0c0c0; }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         .parallax-bg {
             position: fixed;
             top: 0;
@@ -31,13 +55,15 @@
             opacity: 0;
             filter: contrast(1.05) brightness(1.02);
         }
+        
         body {
-            background: transparent;
+            background: var(--bg);
             font-family: 'Inter', sans-serif;
-            color: #2c241e;
+            color: var(--text);
             line-height: 1.55;
             padding: 2rem 1.5rem;
             position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
         }
         body::before {
             content: '';
@@ -46,58 +72,73 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(232, 224, 213, 0.55);
+            background: var(--overlay);
             z-index: -1;
+            transition: background 0.3s ease;
         }
+        
         .container { max-width: 1000px; margin: 0 auto; }
+        
         .dossier {
-            background: rgba(255, 252, 247, 0.85);
+            background: var(--bg-card);
             border-radius: 24px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 12px 30px var(--shadow), 0 2px 4px var(--shadow);
             overflow: hidden;
-            border: 1px solid #e2d5c8;
+            border: 1px solid var(--border);
             backdrop-filter: blur(0px);
+            transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
         }
+        
         .header {
-            background: rgba(245, 239, 232, 0.85);
+            background: var(--bg-header);
             padding: 1.8rem 2rem 1.2rem 2rem;
-            border-bottom: 2px solid #cbbfae;
+            border-bottom: 2px solid var(--border);
             position: relative;
+            transition: background 0.3s ease, border 0.3s ease;
         }
+        
         .rune-line {
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: 1.2rem;
-            color: #9b7b5e;
+            color: var(--text-muted);
             letter-spacing: 4px;
             font-family: monospace;
             margin-bottom: 0.75rem;
         }
+        
         h1 {
             font-family: 'Cormorant Garamont', serif;
             font-size: 2.8rem;
             font-weight: 600;
-            color: #3a2c22;
+            color: var(--text);
             letter-spacing: -0.5px;
+            transition: color 0.3s ease;
         }
+        
         .sub {
-            color: #7d6652;
+            color: var(--text-muted);
             font-size: 0.85rem;
-            border-left: 3px solid #bc9a72;
+            border-left: 3px solid var(--accent);
             padding-left: 1rem;
             margin-top: 0.4rem;
+            transition: color 0.3s ease, border 0.3s ease;
         }
+        
         .header-buttons {
             position: absolute;
             top: 1.8rem;
             right: 2rem;
             display: flex;
             gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
-        .lang-btn, .comrades-btn {
-            background: #2a221c;
-            border: 1px solid #bc9a72;
+        
+        .lang-btn, .comrades-btn, .theme-btn {
+            background: rgba(42, 34, 28, 0.8);
+            border: 1px solid var(--accent);
             color: #e0c8b0;
             padding: 0.5rem 1rem;
             border-radius: 40px;
@@ -111,7 +152,124 @@
             font-family: 'Inter', sans-serif;
             z-index: 10;
         }
-        .lang-btn:hover, .comrades-btn:hover { background: #bc9a72; color: #1f1915; transform: scale(1.02); }
+        
+        .lang-btn:hover, .comrades-btn:hover, .theme-btn:hover {
+            background: var(--accent);
+            color: #1f1915;
+            transform: scale(1.02);
+        }
+        
+        /* ========== МОДАЛЬНОЕ ОКНО ТЕМ ========== */
+        .theme-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+        .theme-modal.active { display: flex; }
+        
+        .theme-modal-content {
+            background: var(--bg-card);
+            border-radius: 24px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+            padding: 1.5rem 2rem 2rem 2rem;
+            transition: background 0.3s ease, border 0.3s ease;
+        }
+        
+        .theme-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.8rem;
+        }
+        .theme-modal-header h3 {
+            font-family: 'Cormorant Garamont', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+        .theme-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: 0.2s;
+        }
+        .theme-modal-close:hover { color: var(--accent); }
+        
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        
+        .theme-card {
+            border-radius: 16px;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--bg-card);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .theme-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+        .theme-card.active-theme {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent), 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .theme-preview {
+            width: 100%;
+            height: 80px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.6rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .theme-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text);
+        }
+        
+        .theme-card .theme-preview {
+            background: var(--bg);
+            color: var(--text);
+            border-color: var(--border);
+        }
+        .theme-card .theme-preview span {
+            background: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            color: #fff;
+        }
+        
+        /* ========== ОСТАЛЬНЫЕ СТИЛИ ========== */
         .modal {
             display: none;
             position: fixed;
@@ -127,86 +285,87 @@
         }
         .modal.active { display: flex; }
         .modal-content {
-            background: #fffcf7;
+            background: var(--bg-card);
             border-radius: 24px;
             max-width: 500px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
-            border: 1px solid #e2d5c8;
+            border: 1px solid var(--border);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             animation: modalFadeIn 0.3s ease;
-        }
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            transition: background 0.3s ease, border 0.3s ease;
         }
         .modal-header {
-            background: #f5efe8;
+            background: var(--bg-header);
             padding: 1rem 1.5rem;
-            border-bottom: 2px solid #cbbfae;
+            border-bottom: 2px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background 0.3s ease, border 0.3s ease;
         }
         .modal-header h3 {
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.5rem;
-            color: #3a2c22;
+            color: var(--text);
         }
         .modal-close {
             background: none;
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: #9b7b5e;
+            color: var(--text-muted);
             transition: 0.2s;
         }
-        .modal-close:hover { color: #bc5a38; }
+        .modal-close:hover { color: var(--accent); }
+        
         .comrade-list { padding: 1rem 1.5rem; }
         .comrade-card {
             display: flex;
             gap: 1rem;
             padding: 1rem 0;
-            border-bottom: 1px solid #e9dfd3;
+            border-bottom: 1px solid var(--border);
         }
         .comrade-card:last-child { border-bottom: none; }
         .comrade-icon {
             width: 50px;
             height: 50px;
-            background: #f2ece4;
+            background: var(--bg);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #dacbbc;
+            border: 1px solid var(--border);
             flex-shrink: 0;
         }
-        .comrade-icon i { font-size: 1.5rem; color: #aa8260; }
+        .comrade-icon i { font-size: 1.5rem; color: var(--rune); }
         .comrade-info { flex: 1; }
-        .comrade-name { font-weight: 700; font-size: 1.1rem; color: #3a2c22; }
+        .comrade-name { font-weight: 700; font-size: 1.1rem; color: var(--text); }
         .comrade-class {
             font-size: 0.7rem;
-            color: #9b826b;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 0.3rem;
         }
         .comrade-thought {
             font-size: 0.85rem;
-            color: #5c4a3b;
+            color: var(--text);
             font-style: italic;
         }
-        .comrade-thought i { color: #bc9a72; margin-right: 4px; }
+        .comrade-thought i { color: var(--accent); margin-right: 4px; }
+        
         .image-gallery {
             cursor: pointer;
             transition: all 0.3s ease;
         }
         .image-gallery:hover {
             filter: brightness(1.05) contrast(1.05);
-            box-shadow: 0 0 15px rgba(188, 106, 56, 0.5), 0 0 30px rgba(188, 106, 56, 0.3);
+            box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent);
             transform: scale(1.01);
         }
+        
         .fullscreen-modal {
             display: none;
             position: fixed;
@@ -241,16 +400,15 @@
             font-weight: bold;
             transition: 0.2s;
         }
-        .fullscreen-close:hover {
-            color: #bc9a72;
-            transform: scale(1.1);
-        }
+        .fullscreen-close:hover { color: var(--accent); transform: scale(1.1); }
+        
         .info-panel {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             padding: 2rem 2rem 0.8rem 2rem;
-            border-bottom: 1px solid #e9dfd3;
+            border-bottom: 1px solid var(--border);
+            transition: border 0.3s ease;
         }
         .avatar {
             flex: 1;
@@ -263,22 +421,24 @@
         .rune-symbol {
             width: 130px;
             height: 130px;
-            background: #f2ece4;
+            background: var(--bg);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #dacbbc;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: background 0.3s ease, border 0.3s ease;
         }
-        .rune-symbol i { font-size: 3.8rem; color: #aa8260; transition: text-shadow 0.2s; }
+        .rune-symbol i { font-size: 3.8rem; color: var(--rune); transition: text-shadow 0.2s; }
         .badge {
-            background: #f3ede6;
+            background: var(--bg);
             padding: 0.3rem 1rem;
             border-radius: 40px;
             font-size: 0.7rem;
-            color: #6e5440;
-            border: 1px solid #dfd0c0;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
         }
         .traits {
             flex: 2.5;
@@ -287,20 +447,21 @@
             gap: 0.8rem 1.5rem;
         }
         .trait-item {
-            border-bottom: 1px solid #e5d9ce;
+            border-bottom: 1px solid var(--border);
             padding-bottom: 0.4rem;
+            transition: border 0.3s ease;
         }
         .trait-label {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #9b826b;
+            color: var(--text-muted);
             font-weight: 500;
         }
         .trait-value {
             font-size: 0.95rem;
             font-weight: 500;
-            color: #3e3026;
+            color: var(--text);
             margin-top: 0.2rem;
         }
         .content { padding: 1.2rem 2rem 2rem 2rem; }
@@ -309,28 +470,31 @@
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.7rem;
             font-weight: 600;
-            color: #836e58;
+            color: var(--text-muted);
             display: flex;
             align-items: center;
             gap: 12px;
-            border-bottom: 1px solid #e0cfbf;
+            border-bottom: 1px solid var(--border);
             padding-bottom: 0.3rem;
             margin-bottom: 1rem;
+            transition: color 0.3s ease, border 0.3s ease;
         }
-        .section-title i { font-size: 1.4rem; color: #bc9a72; }
+        .section-title i { font-size: 1.4rem; color: var(--accent); }
         .section-text {
-            color: #3d3229;
+            color: var(--text);
             text-align: justify;
             margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
         }
         .quote-mini {
-            background: #faf5ef;
+            background: var(--bg);
             padding: 0.8rem 1.2rem;
-            border-left: 4px solid #c9ae8b;
+            border-left: 4px solid var(--accent);
             font-style: italic;
             margin: 1rem 0;
             font-size: 0.9rem;
-            color: #5c4a3b;
+            color: var(--text);
+            transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
         }
         .pillar-list {
             list-style: none;
@@ -341,9 +505,10 @@
             display: flex;
             align-items: baseline;
             gap: 10px;
+            color: var(--text);
         }
         .pillar-list li i {
-            color: #aa8260;
+            color: var(--rune);
             width: 24px;
             font-size: 1rem;
             margin-top: 3px;
@@ -353,22 +518,23 @@
             font-family: 'Cormorant Garamont', serif;
             font-size: 1.3rem;
             font-weight: 600;
-            color: #8e735b;
+            color: var(--text-muted);
             margin: 1rem 0 0.5rem 0;
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: color 0.3s ease;
         }
-        .history-title i { font-size: 1.1rem; color: #bc9a72; }
+        .history-title i { font-size: 1.1rem; color: var(--accent); }
         .chapter-image-left {
             float: left;
             width: 200px;
             margin: 0 1.2rem 0.8rem 0;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #f2ece4;
-            border: 1px solid #e2d5c8;
+            box-shadow: 0 4px 12px var(--shadow);
+            background: var(--bg);
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
         .chapter-image-right {
@@ -377,9 +543,9 @@
             margin: 0 0 0.8rem 1.2rem;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #f2ece4;
-            border: 1px solid #e2d5c8;
+            box-shadow: 0 4px 12px var(--shadow);
+            background: var(--bg);
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
         .chapter-image-left-lower {
@@ -388,9 +554,9 @@
             margin: 0.5rem 1.2rem 0.8rem 0;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #f2ece4;
-            border: 1px solid #e2d5c8;
+            box-shadow: 0 4px 12px var(--shadow);
+            background: var(--bg);
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
         .chapter-image-left img, .chapter-image-right img, .chapter-image-left-lower img {
@@ -401,29 +567,32 @@
         }
         .image-caption {
             font-size: 0.65rem;
-            color: #9b826b;
+            color: var(--text-muted);
             text-align: center;
             padding: 0.4rem;
-            background: #faf7f2;
-            border-top: 1px solid #e9dfd3;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
             font-style: italic;
             cursor: pointer;
+            transition: color 0.3s ease, background 0.3s ease, border 0.3s ease;
         }
         .clear-float { clear: both; }
         hr {
             border: none;
             height: 1px;
-            background: linear-gradient(to right, #e0cfbf, transparent);
+            background: linear-gradient(to right, var(--border), transparent);
             margin: 1rem 0;
         }
         .footer-note {
             text-align: center;
             font-size: 0.7rem;
-            color: #b29b84;
-            border-top: 1px solid #ece1d5;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
             padding: 1.2rem;
-            background: #fefbf8;
+            background: var(--bg);
+            transition: color 0.3s ease, border 0.3s ease, background 0.3s ease;
         }
+        
         .fade-item {
             opacity: 0;
             transform: translateY(12px);
@@ -445,6 +614,13 @@
         }
         .section-title { animation-delay: 0s; }
         .history-title { animation-delay: 0.02s; }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* D&D РАДИО */
         .dnd-radio {
             position: fixed;
             bottom: 20px;
@@ -453,8 +629,8 @@
             background: rgba(30, 25, 20, 0.95);
             backdrop-filter: blur(8px);
             border-radius: 16px;
-            border: 1px solid #c9a87b;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(201, 168, 123, 0.2);
+            border: 1px solid var(--accent);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent);
             font-family: 'Inter', sans-serif;
             z-index: 1000;
             transition: all 0.3s ease;
@@ -470,9 +646,9 @@
             border-radius: 16px 16px 0 0;
             cursor: pointer;
             color: #e8d5b5;
-            border-bottom: 1px solid #c9a87b;
+            border-bottom: 1px solid var(--accent);
         }
-        .radio-header i:first-child { color: #d4a373; font-size: 0.9rem; }
+        .radio-header i:first-child { color: var(--accent); font-size: 0.9rem; }
         .radio-title {
             flex: 1;
             font-size: 0.75rem;
@@ -484,7 +660,7 @@
         .radio-toggle {
             background: none;
             border: none;
-            color: #c9a87b;
+            color: var(--accent);
             cursor: pointer;
             font-size: 1.2rem;
             font-weight: bold;
@@ -504,9 +680,9 @@
             padding: 5px;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 8px;
-            border-left: 3px solid #d4a373;
+            border-left: 3px solid var(--accent);
         }
-        .now-playing i { color: #d4a373; margin-right: 6px; font-size: 0.7rem; }
+        .now-playing i { color: var(--accent); margin-right: 6px; font-size: 0.7rem; }
         .now-playing span {
             font-size: 0.75rem;
             color: #f0e0c0;
@@ -523,7 +699,7 @@
             gap: 8px;
             margin-bottom: 12px;
         }
-        .track-progress span { font-size: 0.6rem; color: #c9a87b; font-family: monospace; }
+        .track-progress span { font-size: 0.6rem; color: var(--accent); font-family: monospace; }
         .progress-bar {
             flex: 1;
             height: 4px;
@@ -535,7 +711,7 @@
         .progress-fill {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #d4a373, #e8c49a);
+            background: linear-gradient(90deg, var(--accent), #e8c49a);
             border-radius: 4px;
             transition: width 0.1s linear;
         }
@@ -547,7 +723,7 @@
         }
         .ctrl-btn {
             background: rgba(201, 168, 123, 0.15);
-            border: 1px solid #c9a87b;
+            border: 1px solid var(--accent);
             border-radius: 50%;
             width: 38px;
             height: 38px;
@@ -558,7 +734,7 @@
             transition: all 0.2s;
             color: #e8d5b5;
         }
-        .ctrl-btn:hover { background: #c9a87b; color: #1f1915; transform: scale(1.05); box-shadow: 0 0 8px rgba(201, 168, 123, 0.5); }
+        .ctrl-btn:hover { background: var(--accent); color: #1f1915; transform: scale(1.05); box-shadow: 0 0 8px var(--accent); }
         .play-btn { width: 44px; height: 44px; background: rgba(201, 168, 123, 0.25); }
         .play-btn i { font-size: 1.1rem; }
         .volume-control {
@@ -567,7 +743,7 @@
             gap: 8px;
             margin-bottom: 10px;
         }
-        .volume-control i { font-size: 0.7rem; color: #c9a87b; }
+        .volume-control i { font-size: 0.7rem; color: var(--accent); }
         .volume-control input {
             flex: 1;
             height: 3px;
@@ -580,19 +756,20 @@
             -webkit-appearance: none;
             width: 10px;
             height: 10px;
-            background: #d4a373;
+            background: var(--accent);
             border-radius: 50%;
             cursor: pointer;
         }
         .playlist-note {
             text-align: center;
             font-size: 0.6rem;
-            color: #9b826b;
+            color: var(--text-muted);
             border-top: 1px solid #4a3a2e;
             padding-top: 6px;
             margin-top: 4px;
         }
         .playlist-note i { margin-right: 4px; }
+        
         @media (max-width: 600px) {
             .chapter-image-left, .chapter-image-right, .chapter-image-left-lower {
                 float: none;
@@ -606,6 +783,7 @@
                 justify-content: center;
             }
             .header { display: flex; flex-direction: column; gap: 0.5rem; }
+            .theme-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
         }
         @media (max-width: 700px) {
             body { padding: 1rem; }
@@ -629,6 +807,7 @@
             <h1 id="mainTitle">Траин Углич</h1>
             <div class="sub" id="mainSub">Рунный рыцарь · бывший воин ордена · солдат без веры</div>
             <div class="header-buttons">
+                <button class="theme-btn" id="themeBtn"><i class="fas fa-palette"></i> Тема</button>
                 <button class="lang-btn" id="langBtn"><i class="fas fa-globe"></i> English</button>
                 <button class="comrades-btn" id="comradesBtn"><i class="fas fa-users"></i> <span id="comradesBtnText">Товарищи</span></button>
             </div>
@@ -731,12 +910,13 @@
                 </ul>
             </div>
             <hr>
-            <div class="section-text fade-item" style="font-size:0.85rem; color:#6a5a4b;"><i class="fas fa-comment-dots"></i> <span id="finalQuote">«Больше всего я боюсь однажды проснуться и понять, что стал тем, кого презирал — слепым исполнителем без чести и памяти. Руна внутри — это не дар и не проклятие. Это экзамен. И я ещё не знаю, сдам ли его».</span></div>
+            <div class="section-text fade-item" style="font-size:0.85rem; color:var(--text-muted);"><i class="fas fa-comment-dots"></i> <span id="finalQuote">«Больше всего я боюсь однажды проснуться и понять, что стал тем, кого презирал — слепым исполнителем без чести и памяти. Руна внутри — это не дар и не проклятие. Это экзамен. И я ещё не знаю, сдам ли его».</span></div>
         </div>
         <div class="footer-note"><i class="fas fa-scroll"></i> <span id="footerText">Квента персонажа · архив вольного клинка · Дельстейн — Соларнтир</span></div>
     </div>
 </div>
 
+<!-- Модалка товарищей -->
 <div id="comradesModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -747,11 +927,61 @@
     </div>
 </div>
 
+<!-- Fullscreen картинок -->
 <div id="fullscreenModal" class="fullscreen-modal">
     <button class="fullscreen-close" id="fullscreenCloseBtn">&times;</button>
     <img id="fullscreenImage" src="" alt="Полноэкранный режим">
 </div>
 
+<!-- Модалка ТЕМ -->
+<div id="themeModal" class="theme-modal">
+    <div class="theme-modal-content">
+        <div class="theme-modal-header">
+            <h3><i class="fas fa-palette"></i> Выберите тему</h3>
+            <button class="theme-modal-close" id="themeModalClose">&times;</button>
+        </div>
+        <div class="theme-grid">
+            <div class="theme-card active-theme" data-theme="1">
+                <div class="theme-preview" style="background:#e8e0d5;color:#2c241e;">
+                    <span style="background:#bc9a72;">Светлая</span>
+                </div>
+                <div class="theme-name">Светлая</div>
+            </div>
+            <div class="theme-card" data-theme="2">
+                <div class="theme-preview" style="background:#1a1a2e;color:#e8e0d5;">
+                    <span style="background:#7a9ac0;">Ночная</span>
+                </div>
+                <div class="theme-name">Ночная синяя</div>
+            </div>
+            <div class="theme-card" data-theme="3">
+                <div class="theme-preview" style="background:#1a0f0a;color:#e8d5c0;">
+                    <span style="background:#c9a87b;">Дворфийская</span>
+                </div>
+                <div class="theme-name">Дворфийская</div>
+            </div>
+            <div class="theme-card" data-theme="4">
+                <div class="theme-preview" style="background:#0d1a0d;color:#d5e0c5;">
+                    <span style="background:#7aaa5a;">Лесная</span>
+                </div>
+                <div class="theme-name">Лесная зелёная</div>
+            </div>
+            <div class="theme-card" data-theme="5">
+                <div class="theme-preview" style="background:#1a0a1a;color:#e0c5d5;">
+                    <span style="background:#c07aaa;">Эльфийская</span>
+                </div>
+                <div class="theme-name">Эльфийская</div>
+            </div>
+            <div class="theme-card" data-theme="6">
+                <div class="theme-preview" style="background:#0a0a0a;color:#d0d0d0;">
+                    <span style="background:#8a8a8a;">Тёмная</span>
+                </div>
+                <div class="theme-name">Тёмная</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- РАДИО -->
 <div class="dnd-radio" id="dndRadio">
     <div class="radio-header" id="radioHeader">
         <i class="fas fa-dice-d6"></i>
@@ -824,7 +1054,7 @@
         return 'fa-paw';
     }
 
-    // ===== ПЛЕЙЛИСТ С ИСПРАВЛЕННЫМИ НАЗВАНИЯМИ =====
+    // ===== ПЛЕЙЛИСТ =====
     const playlist = [
         { name: "Wild Side", url: "SpotiDown.App - Wild Side - ALI.mp3" },
         { name: "American Boy", url: "SpotiDown.App - American Boy - Estelle.mp3" },
@@ -857,11 +1087,9 @@
         const track = playlist[index];
         if (!track) return;
         radioAudio.src = track.url;
-        const trackNameSpan = document.getElementById('currentTrackName');
-        if (trackNameSpan) trackNameSpan.textContent = track.name;
+        document.getElementById('currentTrackName').textContent = track.name;
         radioAudio.load();
-        const trackCounter = document.getElementById('trackCounter');
-        if (trackCounter) trackCounter.textContent = `${index + 1} / ${playlist.length}`;
+        document.getElementById('trackCounter').textContent = `${index + 1} / ${playlist.length}`;
         if (isPlayingRadio) radioAudio.play().catch(e => console.log('Автовоспроизведение заблокировано:', e));
     }
 
@@ -869,13 +1097,11 @@
         if (isPlayingRadio) {
             radioAudio.pause();
             isPlayingRadio = false;
-            const icon = document.getElementById('playPauseRadioBtn')?.querySelector('i');
-            if (icon) icon.className = 'fas fa-play';
+            document.getElementById('playPauseRadioBtn').querySelector('i').className = 'fas fa-play';
         } else {
             radioAudio.play().then(() => {
                 isPlayingRadio = true;
-                const icon = document.getElementById('playPauseRadioBtn')?.querySelector('i');
-                if (icon) icon.className = 'fas fa-pause';
+                document.getElementById('playPauseRadioBtn').querySelector('i').className = 'fas fa-pause';
             }).catch(err => console.log('Ошибка воспроизведения:', err));
         }
     }
@@ -892,6 +1118,21 @@
         if (isPlayingRadio) radioAudio.play().catch(e => console.log(e));
     }
 
+    // ===== ТЕМЫ =====
+    function setTheme(themeId) {
+        document.documentElement.setAttribute('data-theme', themeId);
+        localStorage.setItem('theme', themeId);
+        document.querySelectorAll('.theme-card').forEach(card => {
+            card.classList.toggle('active-theme', card.dataset.theme === themeId);
+        });
+    }
+
+    function initTheme() {
+        const savedTheme = localStorage.getItem('theme') || '1';
+        setTheme(savedTheme);
+    }
+
+    // ===== ОСТАЛЬНЫЕ ФУНКЦИИ =====
     function updateBackgroundOnScroll() {
         const chapter6 = document.querySelector('.history-chapter[data-chapter="6"]');
         if (!chapter6) return;
@@ -914,73 +1155,148 @@
         const modal = document.getElementById('fullscreenModal');
         const modalImg = document.getElementById('fullscreenImage');
         const closeBtn = document.getElementById('fullscreenCloseBtn');
-        
         images.forEach(img => {
             img.addEventListener('click', function(e) {
                 e.stopPropagation();
-                if (modalImg) modalImg.src = this.src;
-                if (modal) modal.classList.add('active');
+                modalImg.src = this.src;
+                modal.classList.add('active');
             });
         });
-        
-        function closeFullscreen() {
-            if (modal) modal.classList.remove('active');
-            if (modalImg) modalImg.src = '';
-        }
-        
-        if (closeBtn) closeBtn.addEventListener('click', closeFullscreen);
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) closeFullscreen();
-            });
-        }
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-                closeFullscreen();
-            }
-        });
+        function closeFullscreen() { modal.classList.remove('active'); modalImg.src = ''; }
+        closeBtn.addEventListener('click', closeFullscreen);
+        modal.addEventListener('click', function(e) { if (e.target === modal) closeFullscreen(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && modal.classList.contains('active')) closeFullscreen(); });
     }
 
     function updateLanguage(lang) {
         currentLang = lang;
         const data = comradesData[lang];
-        const btn = document.getElementById('langBtn');
-        if (btn) btn.innerHTML = lang === 'ru' ? '<i class="fas fa-globe"></i> English' : '<i class="fas fa-globe"></i> Русский';
-        
-        const comradesBtnText = document.getElementById('comradesBtnText');
-        if (comradesBtnText) comradesBtnText.innerText = lang === 'ru' ? 'Товарищи' : 'Comrades';
-        
-        const modalTitle = document.getElementById('modalTitle');
-        if (modalTitle) modalTitle.innerText = lang === 'ru' ? 'Товарищи' : 'Comrades';
-        
+        document.getElementById('langBtn').innerHTML = lang === 'ru' ? '<i class="fas fa-globe"></i> English' : '<i class="fas fa-globe"></i> Русский';
+        document.getElementById('comradesBtnText').innerText = lang === 'ru' ? 'Товарищи' : 'Comrades';
+        document.getElementById('modalTitle').innerText = lang === 'ru' ? 'Товарищи' : 'Comrades';
         const comradeList = document.getElementById('comradeList');
-        if (comradeList) {
-            comradeList.innerHTML = '';
-            data.forEach(c => {
-                const card = document.createElement('div');
-                card.className = 'comrade-card';
-                card.innerHTML = `<div class="comrade-icon"><i class="fas ${getIconForClass(c.name)}"></i></div><div class="comrade-info"><div class="comrade-name">${c.name}</div><div class="comrade-class">${c.class}</div><div class="comrade-thought"><i class="fas fa-quote-left"></i> ${c.thought}</div></div>`;
-                comradeList.appendChild(card);
-            });
+        comradeList.innerHTML = '';
+        data.forEach(c => {
+            const card = document.createElement('div');
+            card.className = 'comrade-card';
+            card.innerHTML = `<div class="comrade-icon"><i class="fas ${getIconForClass(c.name)}"></i></div><div class="comrade-info"><div class="comrade-name">${c.name}</div><div class="comrade-class">${c.class}</div><div class="comrade-thought"><i class="fas fa-quote-left"></i> ${c.thought}</div></div>`;
+            comradeList.appendChild(card);
+        });
+        
+        if (lang === 'ru') {
+            document.getElementById('mainSub').innerText = 'Рунный рыцарь · бывший воин ордена · солдат без веры';
+            document.getElementById('badge1').innerText = 'Живая руна · Раздвоенная молния';
+            document.getElementById('badge2').innerText = '47 зим · Дельстейн';
+            document.getElementById('label1').innerText = 'Пол / Возраст'; document.getElementById('val1').innerText = 'Мужчина, 47 лет';
+            document.getElementById('label2').innerText = 'Рождение'; document.getElementById('val2').innerText = 'Дельстейн, род Углич (кузнецы)';
+            document.getElementById('label3').innerText = 'Ремесло'; document.getElementById('val3').innerText = 'Бывший воин · солдат Соларнтира';
+            document.getElementById('label4').innerText = 'Древняя руна'; document.getElementById('val4').innerHTML = '<i class="fas fa-bolt"></i> Внутрикровная · сила гигантов';
+            document.getElementById('label5').innerText = 'Служба'; document.getElementById('val5').innerText = '20 лет в воинском ордене Дельстейна';
+            document.getElementById('caption1').innerHTML = '✦ Дельстейн — суровый край, где родился Траин ✦';
+            document.getElementById('caption2').innerHTML = '✦ Тайная кузница отца — чёрный камень с древней руной ✦';
+            document.getElementById('caption3').innerHTML = '✦ Воинский орден Дельстейна — старый, дисциплинированный ✦';
+            document.getElementById('caption4').innerHTML = '✦ Один из воинов ордена — сталь и суровость ✦';
+            document.getElementById('caption6').innerHTML = '✦ Тьма наступает — битва за Соларнитар ✦';
+            document.getElementById('historyTitle').innerText = 'История Траина Углича';
+            document.getElementById('ch1Title').innerText = 'Глава первая: Детство и проклятая руна';
+            document.getElementById('ch2Title').innerText = 'Глава вторая: Двадцать лет в ордене';
+            document.getElementById('ch3Title').innerText = 'Глава третья: Таррах Мор · Глас пустоши';
+            document.getElementById('ch4Title').innerText = 'Глава четвёртая: Пёс Соларнтира';
+            document.getElementById('ch5Title').innerText = 'Глава пятая: Тень ордена «Последний Глас»';
+            document.getElementById('ch6Title').innerText = 'Глава шестая: Последний рубеж';
+            document.getElementById('fearTitle').innerText = 'Страх, что гложет изнутри';
+            document.getElementById('goalsTitle').innerText = 'Цели, что ведут вперёд';
+            document.getElementById('footerText').innerText = 'Квента персонажа · архив вольного клинка · Дельстейн — Соларнтир';
+            document.getElementById('ch1Text1').innerHTML = 'Траин родился в Дельстейне, в семье кузнеца Ульда Углича. Мать умерла при родах, отец растил его сурово, брат Балин — жестоко. Траин был тихим и слишком много думал. Это бесило брата. В детстве отец отправил Траина в часовню при старом храме — маленькую каменную церковь на окраине Карнхольма, где молились бедняки. Старая жрица, которую все звали просто Мать, учила детей читать, писать и молиться. Она никогда не называла имя своего бога. Траин пробыл там около года, полюбил тишину храма, но отец забрал его: «мальчику нужно учиться держать молот».';
+            document.getElementById('ch1Text2').innerHTML = 'В двенадцать лет отец показал Траину нижнюю кузницу — тайную комнату с древними артефактами. Там лежал чёрный камень с руной в виде раздвоенной молнии. Руна была тёплой, шептала, светилась холодным синим. Траин тайком прикасался к ней. С того дня руна словно осталась с ним. Не на камне — внутри. Под кожей. В крови. Он чувствовал её, даже когда был далеко от подвала. Балин узнал, ударил Траина, назвал колдуном и слабаком. С тех пор братья стали чужими.';
+            document.getElementById('ch1Text3').innerHTML = 'Отец умер, когда Траину было пятнадцать. Сердце. Прямо у горна. Балин обвинил Траина в проклятии. Кредиторы забрали кузницу. Братья остались на улице. Они попробовали работать наёмниками, но в первой же вылазке Балин избил должника до полусмерти. Траин попытался остановить брата. Балин сказал: «Ты слабак. Иди сдохни в чужих землях». Траин не ударил в ответ. Разжал кулак и ушёл в снегопад. До сих пор не знает — это была сила или слабость.';
+            document.getElementById('ch2Text1').innerHTML = 'Траин не стал скитаться один. Он вступил в один из воинских орденов Дельстейна. Название того ордена он почти забыл — слишком много воды утекло, слишком много крови. Помнит только, что орден был старым, дисциплинированным и не задавал лишних вопросов. Этот орден славился своей суровой школой: железная дисциплина, недельные переходы по снегам, боевые гимны, что пели у костров перед битвой.';
+            document.getElementById('ch2Text2').innerHTML = 'Траин провёл там почти двадцать лет. Сражался. Поднимался по рангу. Учил новобранцев. Носил чужой символ на груди и делал чужую работу. Он никогда не верил в идеалы ордена — в Дельстейне не верят в идеалы, там верят в сталь и приказы. Но орден дал ему крышу над головой, еду и смысл. Траин платил верностью. А потом что-то случилось. В ордене произошёл раскол. Траин оказался между двумя сторонами. Он ушёл. Не с позором — с тяжёлым сердцем.';
+            document.getElementById('ch3Text1').innerHTML = 'После ухода из ордена Траин прибился к торговому каравану, который шёл через Таррах Мор в Соларнтир. Ему было уже под сорок. На четвёртую ночь караван уничтожили тени из пустоши. Траин остался единственным живым. Он лежал среди трупов и умирал. И тогда он услышал голос. Не ушами — где-то внутри. Голос сказал: <strong>«Встань. Ещё не время»</strong>. Он встал. Рана затянулась. Руна внутри проснулась по-настоящему.';
+            document.getElementById('ch3Text2').innerHTML = 'Он шёл три дня без еды и воды. Вышел к воротам Соларнтира, рухнул у стены. Ему было сорок два. Стража бросила ему хлеб, как собаке. Он попал в Соларнтир и просто остался там.';
+            document.getElementById('ch4Text1').innerHTML = 'Он попытался работать — его никуда не брали. Он украл хлеб. Судья дал выбор: тюрьма с «очищением болью» или служба. Траин выбрал службу. Пять лет он уже носит нашивку Соларнтира, выполняет приказы и ненавидит этот город. Ему сорок семь. Руна внутри живёт своей жизнью. Иногда молчит неделями. Иногда пульсирует так, что кости растут. Он слишком стар, чтобы бояться. И слишком устал, чтобы искать ответы.';
+            document.getElementById('ch5Text1').innerHTML = 'В дорожных пыльных архивах Соларнтира он наткнулся на старое досье об Ордене <strong>«Последний Глас Берсерка»</strong>. Тридцать тысяч мечей, сражавшихся против Падижего Магнуса. Их бог — Алый Аргентум. Символ — капля крови в ореоле огня. Траина зацепило название. «Последний Глас». Как тот голос, сказавший «Встань».';
+            document.getElementById('quote1').innerHTML = '«Я не знаю, звал ли меня тот голос. Но если есть хоть искра связи — я докопаюсь до правды».';
+            document.getElementById('ch6Text1').innerHTML = 'Траин оказался в большом зале, где кроме него собрались несколько человек и существ. <strong>Шесть</strong> — зверолюдка-крольчиха, <strong>жрец</strong>, бывшая и нынешняя рабыня. <strong>Балсмер</strong> — огромный орк, <strong>варвар</strong>, здоровый, но туповатый, ничего не помнивший о своём прошлом. <strong>Клэр</strong> — сова, <strong>следопыт</strong>, всегда с луком наготове. И <strong>Каладан</strong> — человек, <strong>паладин</strong> с тяжёлым сердцем и тёмной клятвой. Все они стояли в одном месте, ожидая приказа.';
+            document.getElementById('ch6Text2').innerHTML = 'Внезапно появился очень злой человек — их новый командир. Он приказал найти оружие, после чего выдвигаться на позиции для обороны Соларнитара против нежити. В ходе поисков Траин хотел поднять одну бочку, но оказалось, что это пиво. Несколько бочек пива упали на него, и он оказался купающимся в пене. К нему подбежал Каладан с криком «ПИВО!» и тоже упал. Тут же появилась тёмная эльфийка-маг по имени Биатрис, которая стала их предводительницей.';
+            document.getElementById('ch6Text3').innerHTML = 'Отряд выдвинулся на позиции и начал оборону. Бой был жестоким, волны нежити накатывались одна за другой. Траина чуть не убили, и в итоге они проиграли — позиции были прорваны. Когда вернулись в центр, всё было в руинах, защитники мертвы. Парня Биатрис — дампира — нигде не было. Внезапно появился тёмный рыцарь с ордой нежити, почти окруживший их. Но в последний момент появился ангел-стражник, и они успели уйти в центр — в мазок.';
+            document.getElementById('ch6Text4').innerHTML = 'Оттуда они увидели, как ангел-воин пал. Внутри замка Траин нашёл хороший молот и шлем золотого воина, а также поднял снаряжение с трупа другого дворфа. Они вошли в тронный зал, за которым был спуск вниз. Там они встретили архиепископа, который хотел их спасти. Но их спас пак — муж Биатрис. Пак и архиепископ телепортировали отряд, а с помощью книги Биатрис Траин создал руну телепортации. Их перенесло прямо в холодную реку — подальше от погибшего города.';
+            document.getElementById('fearText1').innerHTML = 'Траин боится не смерти. Смерть была бы даже облегчением. Он боится <strong>потерять последнюю искру своей воли</strong> — превратиться в бессловесное орудие, в цепного пса, который забыл, зачем он дышит. Он боится, что руна внутри однажды поглотит его разум, оставив лишь жажду разрушения. Боится <strong>предать себя снова</strong>, как тогда, когда ушёл из ордена с тяжёлым сердцем, так и не поняв — был ли он трусом или честным перед самим собой.';
+            document.getElementById('fearQuote').innerHTML = '«Я не боюсь удара мечом. Я боюсь проснуться и не узнать своё лицо в зеркале. Боюсь, что однажды руна заговорит вместо меня».';
+            document.getElementById('goal1').innerHTML = '<strong>Обрести ответ</strong> — узнать природу голоса, сказавшего «Встань». Понять, был ли это бог, дух или всего лишь умирающий мозг.';
+            document.getElementById('goal2').innerHTML = '<strong>Вернуть себе имя</strong> — перестать быть «псом Соларнтира». Заработать или отнять свободу, чтобы смотреть в глаза без стыда.';
+            document.getElementById('goal3').innerHTML = '<strong>Принять руну</strong> — либо научиться управлять её силой, либо найти способ усыпить её, прежде чем она сломает его.';
+            document.getElementById('goal4').innerHTML = '<strong>Не умереть никем</strong> — оставить след, пусть даже в виде выжженной руны на камне, чтобы кто-то вспомнил: Траин Углич существовал не только для приказов.';
+            document.getElementById('finalQuote').innerHTML = '«Больше всего я боюсь однажды проснуться и понять, что стал тем, кого презирал — слепым исполнителем без чести и памяти. Руна внутри — это не дар и не проклятие. Это экзамен. И я ещё не знаю, сдам ли его».';
+        } else {
+            document.getElementById('mainSub').innerText = 'Rune Knight · former Order warrior · soldier without faith';
+            document.getElementById('badge1').innerText = 'Living Rune · Forked Lightning';
+            document.getElementById('badge2').innerText = '47 winters · Delstein';
+            document.getElementById('label1').innerText = 'Gender / Age'; document.getElementById('val1').innerText = 'Male, 47 years';
+            document.getElementById('label2').innerText = 'Birth'; document.getElementById('val2').innerText = 'Delstein, Uglich family (blacksmiths)';
+            document.getElementById('label3').innerText = 'Craft'; document.getElementById('val3').innerText = 'Former warrior · soldier of Solarntir';
+            document.getElementById('label4').innerText = 'Ancient Rune'; document.getElementById('val4').innerHTML = '<i class="fas fa-bolt"></i> Bloodborne · Giant\'s strength';
+            document.getElementById('label5').innerText = 'Service'; document.getElementById('val5').innerText = '20 years in the military order of Delstein';
+            document.getElementById('caption1').innerHTML = '✦ Delstein — the harsh land where Train was born ✦';
+            document.getElementById('caption2').innerHTML = '✦ Father\'s secret forge — the black stone with the ancient rune ✦';
+            document.getElementById('caption3').innerHTML = '✦ The military order of Delstein — old, disciplined ✦';
+            document.getElementById('caption4').innerHTML = '✦ One of the order\'s warriors — steel and severity ✦';
+            document.getElementById('caption6').innerHTML = '✦ Darkness approaches — the battle for Solarntir ✦';
+            document.getElementById('historyTitle').innerText = 'The Story of Train Uglich';
+            document.getElementById('ch1Title').innerText = 'Chapter One: Childhood and the Cursed Rune';
+            document.getElementById('ch2Title').innerText = 'Chapter Two: Twenty Years in the Order';
+            document.getElementById('ch3Title').innerText = 'Chapter Three: Tarrakh Mor · The Voice of the Wasteland';
+            document.getElementById('ch4Title').innerText = 'Chapter Four: The Hound of Solarntir';
+            document.getElementById('ch5Title').innerText = 'Chapter Five: The Shadow of the Order "The Last Voice"';
+            document.getElementById('ch6Title').innerText = 'Chapter Six: The Last Stand';
+            document.getElementById('fearTitle').innerText = 'The Fear that Gnaws Within';
+            document.getElementById('goalsTitle').innerText = 'Goals that Lead Forward';
+            document.getElementById('footerText').innerText = 'Character Quest · free blade archive · Delstein — Solarntir';
+            document.getElementById('ch1Text1').innerHTML = 'Train was born in Delstein, in the family of blacksmith Uld Uglich. His mother died in childbirth, his father raised him harshly, his brother Balin — cruelly. Train was quiet and thought too much. This enraged his brother. As a child, his father sent Train to a chapel at an old temple — a small stone church on the outskirts of Karnholm, where the poor prayed. An old priestess, whom everyone simply called Mother, taught children to read, write, and pray. She never named her god. Train stayed there for about a year, loved the silence of the temple, but his father took him back: "a boy needs to learn to hold a hammer."';
+            document.getElementById('ch1Text2').innerHTML = 'At twelve, his father showed Train the lower forge — a secret room with ancient artifacts. There lay a black stone with a rune in the shape of a split lightning bolt. The rune was warm, whispered, glowed cold blue. Train secretly touched it. From that day, the rune remained with him. Not on the stone — inside. Under the skin. In the blood. He felt it even when far from the cellar. Balin found out, struck Train, called him a sorcerer and a weakling. From then on, the brothers became strangers.';
+            document.getElementById('ch1Text3').innerHTML = 'His father died when Train was fifteen. Heart. Right at the forge. Balin blamed Train for the curse. Creditors took the forge. The brothers were left on the street. They tried to work as mercenaries, but in the first sortie, Balin beat a debtor half to death. Train tried to stop his brother. Balin said: "You\'re a weakling. Go die in foreign lands." Train didn\'t strike back. He unclenched his fist and walked into the snowfall. He still doesn\'t know — was that strength or weakness.';
+            document.getElementById('ch2Text1').innerHTML = 'Train did not wander alone. He joined one of the military orders of Delstein. He almost forgot the name of that order — too much water has flowed, too much blood. He only remembers that the order was old, disciplined, and asked no unnecessary questions. This order was famous for its harsh school: iron discipline, week-long treks through snow, battle hymns sung around campfires before battle.';
+            document.getElementById('ch2Text2').innerHTML = 'Train spent almost twenty years there. He fought. Rose through the ranks. Taught recruits. Wore someone else\'s symbol on his chest and did someone else\'s work. He never believed in the order\'s ideals — in Delstein, they don\'t believe in ideals, they believe in steel and orders. But the order gave him a roof over his head, food, and meaning. Train repaid with loyalty. Then something happened. A schism occurred in the order. Train found himself between two sides. He left. Not in disgrace — with a heavy heart.';
+            document.getElementById('ch3Text1').innerHTML = 'After leaving the order, Train joined a trade caravan heading through Tarrakh Mor to Solarntir. He was already under forty. On the fourth night, shadows from the wasteland destroyed the caravan. Train was the only survivor. He lay among the corpses, dying. And then he heard a voice. Not with his ears — somewhere inside. The voice said: <strong>"Get up. It\'s not time yet."</strong> He stood up. The wound healed. The rune inside truly awakened.';
+            document.getElementById('ch3Text2').innerHTML = 'He walked for three days without food or water. He reached the gates of Solarntir and collapsed against the wall. He was forty-two. The guards threw him bread like a dog. He ended up in Solarntir and simply stayed there. There was nowhere to go. The order he served for twenty years remained in the past. The voice fell silent.';
+            document.getElementById('ch4Text1').innerHTML = 'He tried to find work — no one would hire him. He stole bread. The judge gave him a choice: prison with "purification through pain" or service. Train chose service. For five years now, he has worn Solarntir\'s patch, follows orders, and hates this city. He is forty-seven. The rune inside lives its own life. Sometimes it is silent for weeks. Sometimes it pulses so strongly that Train feels his bones grow, his muscles fill with the strength of ancient giants. He is too old to be afraid. And too tired to seek answers.';
+            document.getElementById('ch5Text1').innerHTML = 'There was one more detail that Train never told anyone. Somewhere in the dusty road archives of Solarntir, he came across an old file. It spoke of the Order <strong>"The Last Voice of the Berserker"</strong>. Thirty thousand swords, fighting against Padizhe Magnus. Their god — the Crimson Argentum, embodiment of discipline and war. Their symbol — a drop of blood in a halo of fire. The name caught Train\'s attention. "The Last Voice." Like the voice that told him "Get up."';
+            document.getElementById('quote1').innerHTML = '"I don\'t know if that voice called me. But if there\'s even a spark of connection — I will get to the truth."';
+            document.getElementById('ch6Text1').innerHTML = 'Train found himself in a large hall where several people and creatures had gathered besides him. <strong>Six</strong> — a hare beastfolk, <strong>cleric</strong>, former and current slave. <strong>Balsmer</strong> — a huge orc, <strong>barbarian</strong>, healthy but dim-witted, remembering nothing of his past. <strong>Claire</strong> — an owl, <strong>ranger</strong>, always with her bow ready. And <strong>Khaladan</strong> — a human, <strong>paladin</strong> with a heavy heart and a dark oath. They all stood in one place, awaiting orders.';
+            document.getElementById('ch6Text2').innerHTML = 'Suddenly, a very angry man appeared — their new commander. He ordered them to find weapons, then move to positions to defend Solarntir against the undead. During the search, Train tried to lift one barrel, but it turned out to be beer. Several barrels of beer fell on him, and he ended up bathing in foam. Khaladan ran up to him shouting "BEER!" and also fell. Then a dark elf mage named Beatrice appeared, becoming their leader.';
+            document.getElementById('ch6Text3').innerHTML = 'The squad moved to positions and began their defense. The battle was brutal, waves of undead crashing one after another. Train was almost killed, and in the end they lost — the positions were overrun. When they returned to the center, everything was in ruins, the defenders dead. Beatrice\'s boyfriend — a dhampir — was nowhere to be found. Suddenly, a dark knight appeared with a horde of undead, nearly surrounding them. But at the last moment, a guardian angel appeared, and they managed to escape to the center — into the maze.';
+            document.getElementById('ch6Text4').innerHTML = 'From there, they saw the angel warrior fall. Inside the castle, Train found a good hammer and a golden warrior\'s helmet, and also salvaged gear from another dwarf\'s corpse. They entered the throne room, behind which was a descent downward. There they met an archbishop who wanted to save them. But they were saved by a pack — Beatrice\'s husband. The pack and the archbishop teleported the squad, and with the help of Beatrice\'s book, Train created a teleportation rune. They were transported straight into the cold river — far from the fallen city.';
+            document.getElementById('fearText1').innerHTML = 'Train is not afraid of death. Death would even be a relief. He fears <strong>losing the last spark of his will</strong> — turning into a speechless tool, a chained dog who has forgotten why he breathes. He fears that the rune inside will one day consume his mind, leaving only a thirst for destruction. He fears <strong>betraying himself again</strong>, as when he left the order with a heavy heart, never understanding — was he a coward or honest with himself.';
+            document.getElementById('fearQuote').innerHTML = '"I am not afraid of a sword strike. I am afraid of waking up and not recognizing my face in the mirror. Afraid that one day the rune will speak instead of me."';
+            document.getElementById('goal1').innerHTML = '<strong>Find an answer</strong> — learn the nature of the voice that said "Get up." Understand whether it was a god, a spirit, or just a dying brain.';
+            document.getElementById('goal2').innerHTML = '<strong>Regain his name</strong> — stop being "Solarntir\'s dog." Earn or take freedom to look people in the eyes without shame.';
+            document.getElementById('goal3').innerHTML = '<strong>Accept the rune</strong> — either learn to control its power, or find a way to put it to sleep before it breaks him.';
+            document.getElementById('goal4').innerHTML = '<strong>Not die as nobody</strong> — leave a mark, even as a scorched rune on stone, so someone remembers: Train Uglich existed not only for orders.';
+            document.getElementById('finalQuote').innerHTML = '"Most of all, I fear waking up one day and realizing that I have become what I despised — a blind executor without honor and memory. The rune inside is not a gift or a curse. It is an exam. And I don\'t yet know if I will pass it."';
         }
-        
-        const mainSub = document.getElementById('mainSub');
-        if (mainSub) mainSub.innerText = lang === 'ru' ? 'Рунный рыцарь · бывший воин ордена · солдат без веры' : 'Rune Knight · former Order warrior · soldier without faith';
-        
-        const historyTitle = document.getElementById('historyTitle');
-        if (historyTitle) historyTitle.innerText = lang === 'ru' ? 'История Траина Углича' : 'The Story of Train Uglich';
-        
-        const fearTitle = document.getElementById('fearTitle');
-        if (fearTitle) fearTitle.innerText = lang === 'ru' ? 'Страх, что гложет изнутри' : 'The Fear that Gnaws Within';
-        
-        const goalsTitle = document.getElementById('goalsTitle');
-        if (goalsTitle) goalsTitle.innerText = lang === 'ru' ? 'Цели, что ведут вперёд' : 'Goals that Lead Forward';
-        
-        const footerText = document.getElementById('footerText');
-        if (footerText) footerText.innerText = lang === 'ru' ? 'Квента персонажа · архив вольного клинка · Дельстейн — Соларнтир' : 'Character Quest · free blade archive · Delstein — Solarntir';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        // ТЕМЫ
+        const themeBtn = document.getElementById('themeBtn');
+        const themeModal = document.getElementById('themeModal');
+        const themeModalClose = document.getElementById('themeModalClose');
+        const themeCards = document.querySelectorAll('.theme-card');
+        
+        themeBtn.addEventListener('click', () => themeModal.classList.add('active'));
+        themeModalClose.addEventListener('click', () => themeModal.classList.remove('active'));
+        themeModal.addEventListener('click', (e) => { if (e.target === themeModal) themeModal.classList.remove('active'); });
+        
+        themeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const themeId = card.dataset.theme;
+                setTheme(themeId);
+                themeModal.classList.remove('active');
+            });
+        });
+        initTheme();
+
+        // РАДИО
         const playPauseBtn = document.getElementById('playPauseRadioBtn');
         const nextBtn = document.getElementById('nextTrackBtn');
         const prevBtn = document.getElementById('prevTrackBtn');
@@ -995,20 +1311,14 @@
         radioAudio.addEventListener('timeupdate', () => {
             if (radioAudio.duration) {
                 const percent = (radioAudio.currentTime / radioAudio.duration) * 100;
-                const progressFill = document.getElementById('progressFill');
-                const currentTimeSpan = document.getElementById('currentTime');
-                if (progressFill) progressFill.style.width = percent + '%';
-                if (currentTimeSpan) currentTimeSpan.textContent = formatRadioTime(radioAudio.currentTime);
+                document.getElementById('progressFill').style.width = percent + '%';
+                document.getElementById('currentTime').textContent = formatRadioTime(radioAudio.currentTime);
             }
         });
-        
         radioAudio.addEventListener('loadedmetadata', () => {
-            const durationSpan = document.getElementById('duration');
-            if (durationSpan) durationSpan.textContent = formatRadioTime(radioAudio.duration);
+            document.getElementById('duration').textContent = formatRadioTime(radioAudio.duration);
         });
-        
         radioAudio.addEventListener('ended', () => nextRadioTrack());
-        
         if (progressBar) {
             progressBar.addEventListener('click', (e) => {
                 const rect = progressBar.getBoundingClientRect();
@@ -1021,35 +1331,23 @@
         const radioToggle = document.getElementById('radioToggle');
         const radioHeader = document.getElementById('radioHeader');
         let isCollapsed = false;
-        
         if (radioToggle) {
             radioToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
                 isCollapsed = !isCollapsed;
                 if (radio) {
-                    if (isCollapsed) {
-                        radio.classList.add('collapsed');
-                        radioToggle.textContent = '+';
-                    } else {
-                        radio.classList.remove('collapsed');
-                        radioToggle.textContent = '−';
-                    }
+                    if (isCollapsed) { radio.classList.add('collapsed'); radioToggle.textContent = '+'; } 
+                    else { radio.classList.remove('collapsed'); radioToggle.textContent = '−'; }
                 }
             });
         }
-        
         if (radioHeader) {
             radioHeader.addEventListener('click', (e) => {
                 if (e.target !== radioToggle) {
                     isCollapsed = !isCollapsed;
                     if (radio) {
-                        if (isCollapsed) {
-                            radio.classList.add('collapsed');
-                            if (radioToggle) radioToggle.textContent = '+';
-                        } else {
-                            radio.classList.remove('collapsed');
-                            if (radioToggle) radioToggle.textContent = '−';
-                        }
+                        if (isCollapsed) { radio.classList.add('collapsed'); if (radioToggle) radioToggle.textContent = '+'; } 
+                        else { radio.classList.remove('collapsed'); if (radioToggle) radioToggle.textContent = '−'; }
                     }
                 }
             });
@@ -1060,39 +1358,32 @@
             radioAudio.volume = 0.4;
             if (volumeSlider) volumeSlider.value = 0.4;
         }
-        
+
+        // ОСТАЛЬНОЕ
         initFullscreen();
         updateLanguage('ru');
         updateBackgroundOnScroll();
-        
         window.addEventListener('scroll', updateBackgroundOnScroll);
         window.addEventListener('resize', updateBackgroundOnScroll);
         
-        const langBtn = document.getElementById('langBtn');
-        if (langBtn) {
-            langBtn.addEventListener('click', () => {
-                updateLanguage(currentLang === 'ru' ? 'en' : 'ru');
-            });
-        }
+        document.getElementById('langBtn').addEventListener('click', () => {
+            updateLanguage(currentLang === 'ru' ? 'en' : 'ru');
+        });
         
-        const comradesBtn = document.getElementById('comradesBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const modalEl = document.getElementById('comradesModal');
-        
-        if (comradesBtn && modalEl) {
-            comradesBtn.addEventListener('click', () => modalEl.classList.add('active'));
-        }
-        if (closeModalBtn && modalEl) {
-            closeModalBtn.addEventListener('click', () => modalEl.classList.remove('active'));
-        }
-        if (modalEl) {
-            modalEl.addEventListener('click', (e) => { if (e.target === modalEl) modalEl.classList.remove('active'); });
-        }
+        document.getElementById('comradesBtn').addEventListener('click', () => {
+            document.getElementById('comradesModal').classList.add('active');
+        });
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            document.getElementById('comradesModal').classList.remove('active');
+        });
+        document.getElementById('comradesModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) document.getElementById('comradesModal').classList.remove('active');
+        });
         
         const runeSymbol = document.querySelector('.rune-symbol i');
         if (runeSymbol) {
             setInterval(() => {
-                runeSymbol.style.textShadow = '0 0 8px #d47f58';
+                runeSymbol.style.textShadow = '0 0 8px var(--rune-glow)';
                 setTimeout(() => { runeSymbol.style.textShadow = 'none'; }, 200);
             }, 3000);
         }
