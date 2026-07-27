@@ -77,7 +77,7 @@ body::before {
 }
 
 h1 {
-    font-family: 'Cormorant Garamont', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 2.8rem;
     font-weight: 600;
     color: #3a2c22;
@@ -98,6 +98,7 @@ h1 {
     right: 2rem;
     display: flex;
     gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
 .lang-btn, .comrades-btn {
@@ -119,6 +120,196 @@ h1 {
 
 .lang-btn:hover, .comrades-btn:hover { background: #bc9a72; color: #1f1915; transform: scale(1.02); }
 
+/* ===== ВКЛАДКИ ===== */
+.tabs-container {
+    padding: 0 2rem;
+    border-bottom: 1px solid #e9dfd3;
+    background: rgba(250, 247, 242, 0.85);
+}
+.tabs {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+}
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #9b826b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.tab-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+.tab-btn:hover {
+    color: #5c4a3b;
+    background: rgba(188, 154, 114, 0.08);
+}
+.tab-btn:hover i {
+    transform: translateY(-2px);
+}
+.tab-btn.active {
+    color: #3a2c22;
+    background: rgba(255, 252, 247, 0.95);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+}
+.tab-btn.active i {
+    color: #bc9a72;
+}
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #bc9a72;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+.tab-btn.active::after {
+    width: 70%;
+}
+.tab-btn .tab-badge {
+    background: #e9dfd3;
+    color: #7d6652;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.6rem;
+    border-radius: 40px;
+    font-weight: 600;
+}
+.tab-btn.active .tab-badge {
+    background: #bc9a72;
+    color: #fff;
+}
+
+/* ===== КОНТЕНТ ВКЛАДОК ===== */
+.tab-content {
+    padding: 2rem 2rem 2rem 2rem;
+    position: relative;
+    min-height: 300px;
+}
+.tab-pane {
+    display: none;
+    animation: tabFadeIn 0.5s ease forwards;
+}
+.tab-pane.active {
+    display: block;
+}
+@keyframes tabFadeIn {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.tab-pane .section {
+    margin-bottom: 1.5rem;
+}
+.tab-pane .section:last-child {
+    margin-bottom: 0;
+}
+.tab-pane .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #836e58;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #e0cfbf;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+}
+.tab-pane .section-title i { font-size: 1.2rem; color: #bc9a72; }
+.tab-pane .section-text {
+    color: #3d3229;
+    text-align: justify;
+    margin-bottom: 0.75rem;
+}
+.tab-pane .quote-mini {
+    background: #faf5ef;
+    padding: 0.8rem 1.2rem;
+    border-left: 4px solid #c9ae8b;
+    font-style: italic;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: #5c4a3b;
+}
+.tab-pane .pillar-list {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+.tab-pane .pillar-list li {
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+.tab-pane .pillar-list li i {
+    color: #aa8260;
+    width: 24px;
+    font-size: 1rem;
+    margin-top: 3px;
+}
+
+/* Карточки товарищей в табе */
+.comrade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+.comrade-card-tab {
+    background: #faf7f2;
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    border: 1px solid #e9dfd3;
+    transition: all 0.3s ease;
+}
+.comrade-card-tab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    border-color: #dacbbc;
+}
+.comrade-card-tab .comrade-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #3a2c22;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.comrade-card-tab .comrade-name i {
+    color: #aa8260;
+}
+.comrade-card-tab .comrade-class {
+    font-size: 0.65rem;
+    color: #9b826b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0.2rem 0 0.4rem 0;
+}
+.comrade-card-tab .comrade-thought {
+    font-size: 0.85rem;
+    color: #5c4a3b;
+    font-style: italic;
+    border-top: 1px solid #e9dfd3;
+    padding-top: 0.5rem;
+}
+.comrade-card-tab .comrade-thought i {
+    color: #bc9a72;
+    margin-right: 4px;
+}
+
 /* Модальное окно товарищей */
 .modal {
     display: none;
@@ -133,7 +324,6 @@ h1 {
     justify-content: center;
     align-items: center;
 }
-
 .modal.active { display: flex; }
 
 .modal-content {
@@ -160,10 +350,13 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .modal-header h3 {
-    font-family: 'Cormorant Garamont', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
     color: #3a2c22;
 }
@@ -176,7 +369,6 @@ h1 {
     color: #9b7b5e;
     transition: 0.2s;
 }
-
 .modal-close:hover { color: #bc5a38; }
 
 .comrade-list { padding: 1rem 1.5rem; }
@@ -187,7 +379,6 @@ h1 {
     padding: 1rem 0;
     border-bottom: 1px solid #e9dfd3;
 }
-
 .comrade-card:last-child { border-bottom: none; }
 
 .comrade-icon {
@@ -201,13 +392,10 @@ h1 {
     border: 1px solid #dacbbc;
     flex-shrink: 0;
 }
-
 .comrade-icon i { font-size: 1.5rem; color: #aa8260; }
 
 .comrade-info { flex: 1; }
-
 .comrade-name { font-weight: 700; font-size: 1.1rem; color: #3a2c22; }
-
 .comrade-class {
     font-size: 0.7rem;
     color: #9b826b;
@@ -215,13 +403,11 @@ h1 {
     letter-spacing: 1px;
     margin-bottom: 0.3rem;
 }
-
 .comrade-thought {
     font-size: 0.85rem;
     color: #5c4a3b;
     font-style: italic;
 }
-
 .comrade-thought i { color: #bc9a72; margin-right: 4px; }
 
 /* Галерея и fullscreen */
@@ -229,7 +415,6 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 .image-gallery:hover {
     filter: brightness(1.05) contrast(1.05);
     box-shadow: 0 0 15px rgba(188, 106, 56, 0.5), 0 0 30px rgba(188, 106, 56, 0.3);
@@ -249,9 +434,7 @@ h1 {
     align-items: center;
     cursor: pointer;
 }
-
 .fullscreen-modal.active { display: flex; }
-
 .fullscreen-modal img {
     max-width: 90vw;
     max-height: 90vh;
@@ -259,7 +442,6 @@ h1 {
     border-radius: 12px;
     box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
-
 .fullscreen-close {
     position: absolute;
     top: 20px;
@@ -273,7 +455,6 @@ h1 {
     font-weight: bold;
     transition: 0.2s;
 }
-
 .fullscreen-close:hover {
     color: #bc9a72;
     transform: scale(1.1);
@@ -307,8 +488,11 @@ h1 {
     justify-content: center;
     border: 1px solid #dacbbc;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: transform 0.4s ease;
 }
-
+.rune-symbol:hover {
+    transform: rotate(10deg) scale(1.05);
+}
 .rune-symbol i { font-size: 3.8rem; color: #aa8260; transition: text-shadow 0.2s; }
 
 .badge {
@@ -348,12 +532,12 @@ h1 {
 }
 
 /* Контент и главы */
-.content { padding: 1.2rem 2rem 2rem 2rem; }
+.content { padding: 0; }
 
 .section { margin-bottom: 2.2rem; }
 
 .section-title {
-    font-family: 'Cormorant Garamont', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.7rem;
     font-weight: 600;
     color: #836e58;
@@ -405,7 +589,7 @@ h1 {
 .history-chapter { margin-bottom: 1.5rem; }
 
 .history-title {
-    font-family: 'Cormorant Garamont', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
     font-weight: 600;
     color: #8e735b;
@@ -502,6 +686,8 @@ hr {
 .fade-item:nth-child(3) { animation-delay: 0.15s; }
 .fade-item:nth-child(4) { animation-delay: 0.20s; }
 .fade-item:nth-child(5) { animation-delay: 0.25s; }
+.fade-item:nth-child(6) { animation-delay: 0.30s; }
+.fade-item:nth-child(7) { animation-delay: 0.35s; }
 
 @keyframes fadeInUp {
     0% { opacity: 0; transform: translateY(12px); }
@@ -517,7 +703,7 @@ hr {
 .section-title { animation-delay: 0s; }
 .history-title { animation-delay: 0.02s; }
 
-/* D&D РАДИО ПЛЕЕР */
+/* ========== D&D РАДИО ПЛЕЕР ========== */
 .dnd-radio {
     position: fixed;
     bottom: 20px;
@@ -691,7 +877,7 @@ hr {
 
 .playlist-note i { margin-right: 4px; }
 
-/* Адаптивность */
+/* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 600px) {
     .chapter-image-left, .chapter-image-right, .chapter-image-left-lower {
         float: none;
@@ -703,14 +889,22 @@ hr {
         position: static;
         margin-top: 1rem;
         justify-content: center;
+        flex-wrap: wrap;
     }
     .header { display: flex; flex-direction: column; gap: 0.5rem; }
+    .tabs { justify-content: center; }
+    .tab-btn { padding: 0.6rem 1rem; font-size: 0.75rem; }
+    .tab-btn i { display: none; }
+    .tab-content { padding: 1.2rem; }
+    .comrade-grid { grid-template-columns: 1fr; }
+    .dnd-radio { width: 220px; right: 10px; bottom: 10px; }
 }
 
 @media (max-width: 700px) {
     body { padding: 1rem; }
     h1 { font-size: 2rem; }
-    .info-panel, .content { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .info-panel { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .tabs-container { padding: 0 1rem; }
     .section-title { font-size: 1.4rem; }
     .history-title { font-size: 1.1rem; }
 }
